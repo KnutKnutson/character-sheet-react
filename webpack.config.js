@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
     context: __dirname,
     entry: {
-        app: './src/js/app.js',
+        app: './src/app.js',
         vendor: ['react', 'react-dom', 'firebase']
     },
     output: {
