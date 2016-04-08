@@ -5,7 +5,7 @@ var Header = React.createClass({
     render: function() {
         return (
             <AppBar
-                title="Title"
+                title="Character Sheet"
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
             />
         );
