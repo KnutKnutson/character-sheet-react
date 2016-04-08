@@ -1,11 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Header = require('./components/navigation.js');
-var AppBar = require('material-ui/lib/app-bar');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Header from './components/navigation.js';
 
 ReactDOM.render(
-    <div>
-        Hello World
-    </div>,
+    <Header />,
     document.getElementById('app')
 );

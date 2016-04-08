@@ -1,5 +1,5 @@
-var React = require('react');
-var AppBar = require('material-ui/lib/app-bar');
+import React from 'react';
+import AppBar from 'material-ui/lib/app-bar';
 
 var Header = React.createClass({
     render: function() {
@@ -12,4 +12,4 @@ var Header = React.createClass({
     }
 });
 
-module.exports = Header;
+export default Header;
