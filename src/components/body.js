@@ -10,6 +10,10 @@ import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
 @ThemeDecorator(ThemeManager.getMuiTheme(CustomTheme))
 class Body extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
     // Lifecycle methods
     getInitialState() {

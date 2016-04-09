@@ -1,33 +1,22 @@
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
-import IconButton from 'material-ui/lib/icon-button';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import MenuItem from 'material-ui/lib/menus/menu-item';
 
 import NavDrawer from './nav_drawer';
+import NavMenu from './nav_menu';
 
-var Header = React.createClass({
-    render: function() {
+
+export default class Header extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
         return (
             <AppBar
                 title="Character Sheet"
                 iconElementLeft={<NavDrawer />}
-                iconElementRight={
-                    <IconMenu
-                        iconButtonElement={
-                            <IconButton><MoreVertIcon /></IconButton>
-                        }
-                        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                        anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
-
-                        <MenuItem primaryText="Sign In" />
-                        <MenuItem primaryText="New" />
-                    </IconMenu>
-                }
-            />
+                iconElementRight={<NavMenu /> } />
         );
     }
-});
-
-export default Header;
+}
