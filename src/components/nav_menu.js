@@ -17,7 +17,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
-import Login from './login';
+import LoginDialog from './login';
 
 export default class NavMenu extends React.Component {
 
@@ -45,7 +45,7 @@ export default class NavMenu extends React.Component {
                     <MenuItem
                         primaryText="Preview"
                         leftIcon={<RemoveRedEye />}
-                        onTouchTap={this.handleOpen} >
+                        onTouchTap={this.updateField('loginOpen', true)} >
                     </MenuItem>
                     <MenuItem primaryText="Get links" leftIcon={<ContentLink />} />
                     <Divider />
@@ -56,10 +56,11 @@ export default class NavMenu extends React.Component {
                     <MenuItem primaryText="Remove" leftIcon={<Delete />} />
                 </IconMenu>
 
-                <Login
+                <LoginDialog
                     open={this.state.loginOpen}
-                    onCancel={this.updateField('loginOpen', false)}
-                    onSubmit={this.updateField('loginOpen', false)}/>
+                    handleCancel={this.updateField('loginOpen', false)}
+                    handleSubmit={this.updateField('loginOpen', false)}
+                    />
             </div>
         );
     }

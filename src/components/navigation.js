@@ -15,8 +15,13 @@ export default class Header extends React.Component{
         return (
             <AppBar
                 title="Character Sheet"
-                iconElementLeft={<NavDrawer />}
-                iconElementRight={<NavMenu /> } />
+                iconElementLeft={
+                    <NavDrawer />
+                }
+                //iconElementRight={
+                //    <NavMenu />
+                //}
+            />
         );
     }
 }
