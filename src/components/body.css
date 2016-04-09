@@ -1,0 +1,14 @@
+
+body {
+    background: #CFD8DC;
+}
+
+#app {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 500px) {
+
+}

@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Header from './components/navigation.js';
-import LeftNavSimpleExample from './components/nav_drawer';
+import Body from './components/body';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -12,8 +11,6 @@ import LeftNavSimpleExample from './components/nav_drawer';
 injectTapEventPlugin();
 
 ReactDOM.render(
-    <div>
-        <Header />
-    </div> ,
+    <Body />,
     document.getElementById('app')
 );
