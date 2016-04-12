@@ -1,10 +1,8 @@
 import Firebase from 'firebase';
-import FirebaseConfig from '../../config/firebase';
 
 export default class Auth {
     constructor() {
-        this.config = new FirebaseConfig();
-        this.firebase = new Firebase(this.config.url);
+        this.firebase = new Firebase(config.firebase.url);
     }
 
     authDataCallback = (authData) => {
@@ -16,8 +14,7 @@ export default class Auth {
     };
 
     authenticate = (callback) => {
-        // Register the callback to be fired every time auth state changes
-        this.firebase.getAuth(this.authDataCallback);
+        return this.firebase.getAuth();
     };
 
     login = () => {
@@ -44,6 +41,10 @@ export default class Auth {
                 console.log("Successfully created user account with uid:", userData.uid);
             }
         });
+    };
+
+    saveUser = () => {
+
     };
 
     deleteUser = () => {

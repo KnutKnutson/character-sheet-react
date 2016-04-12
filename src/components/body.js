@@ -1,12 +1,12 @@
 import React from 'react';
 import LeftNav from 'material-ui/lib/left-nav';
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
 import Header from './navigation.js';
 import Sheet from './sheet';
 
 import CustomTheme from '../theme';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
 @ThemeDecorator(ThemeManager.getMuiTheme(CustomTheme))
 class Body extends React.Component {
@@ -15,10 +15,6 @@ class Body extends React.Component {
         this.state = {};
     }
 
-    // Lifecycle methods
-    getInitialState() {
-        return {};
-    }
     componentWillMount() {
         const mql = window.matchMedia(`(min-width: 800px)`);
         mql.addListener(this.mediaQueryChanged);
@@ -39,7 +35,7 @@ class Body extends React.Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header {...this.props} />
                 <Sheet />
             </div>
         );

@@ -16,11 +16,11 @@ export default class Header extends React.Component{
             <AppBar
                 title="Character Sheet"
                 iconElementLeft={
-                    <NavDrawer />
+                    <NavDrawer {...this.props} />
                 }
-                //iconElementRight={
-                //    <NavMenu />
-                //}
+                iconElementRight={
+                    <NavMenu {...this.props} />
+                }
             />
         );
     }

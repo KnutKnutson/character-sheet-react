@@ -17,13 +17,17 @@ import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
-import LoginDialog from './login';
+import LoginDialog from './forms/login';
+import SignupDialog from './forms/signup';
 
 export default class NavMenu extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { loginOpen: false };
+        this.state = {
+            loginOpen: false,
+            signupOpen: false
+        };
     }
 
     updateField = (fieldName, value) => {
@@ -32,35 +36,42 @@ export default class NavMenu extends React.Component {
         this.setState(stateChange);
     };
 
+    openLoginDialog = () => {
+        this.setState({loginOpen: true});
+    };
+
+    closeLoginDialog = () => {
+        this.setState({loginOpen: false});
+    };
+
+    openSignupDialog = () => {
+        this.setState({signupOpen: true});
+    };
+
+    closeSignupDialog = () => {
+        this.setState({signupOpen: false});
+    };
+
     render() {
         return (
             <div>
-                <IconMenu
+                <IconMenu {...this.props}
                     iconButtonElement={
                                 <IconButton><MoreVertIcon /></IconButton>
                             }
                     targetOrigin={{horizontal: 'right', vertical: 'top'}}
                     anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
-
-                    <MenuItem
-                        primaryText="Preview"
-                        leftIcon={<RemoveRedEye />}
-                        onTouchTap={this.updateField('loginOpen', true)} >
-                    </MenuItem>
-                    <MenuItem primaryText="Get links" leftIcon={<ContentLink />} />
-                    <Divider />
-                    <MenuItem primaryText="Make a copy" leftIcon={<ContentCopy />} />
-                    <MenuItem primaryText="Download" leftIcon={<Download />} />
+                    {(true)
+                        ? <MenuItem primaryText="Login" leftIcon={<RemoveRedEye />} onTouchTap={this.openLoginDialog} />
+                        : <MenuItem primaryText="Get links" leftIcon={<ContentLink />} />}
+                    <MenuItem primaryText="Signup" leftIcon={<PersonAdd />} onTouchTap={this.openSignupDialog} />
                     <Divider />
                     <MenuItem primaryText="Share" leftIcon={<PersonAdd />} />
-                    <MenuItem primaryText="Remove" leftIcon={<Delete />} />
+                    <MenuItem primaryText="Delete" leftIcon={<Delete />} />
                 </IconMenu>
 
-                <LoginDialog
-                    open={this.state.loginOpen}
-                    handleCancel={this.updateField('loginOpen', false)}
-                    handleSubmit={this.updateField('loginOpen', false)}
-                    />
+                <LoginDialog open={this.state.loginOpen} buttonCallback={this.closeLoginDialog} />
+                <SignupDialog open={this.state.signupOpen} buttonCallback={this.closeSignupDialog} />
             </div>
         );
     }

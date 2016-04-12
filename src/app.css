@@ -17,3 +17,7 @@
 @import "components/nav_drawer.css";
 @import "components/sheet.css";
 
+.text-center {
+    text-align: center;
+}
+

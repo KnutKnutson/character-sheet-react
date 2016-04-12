@@ -3,8 +3,9 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
+import TextField from 'material-ui/lib/text-field';
 
-//import Auth from '../util/auth';
+import Auth from '../../util/auth';
 
 class LoginDialog extends React.Component {
     constructor(props) {
@@ -12,31 +13,40 @@ class LoginDialog extends React.Component {
         this.state = { };
     }
 
+    login = () => {
+        var auth = new Auth();
+        auth.login();
+        this.props.buttonCallback();
+    };
+
     render() {
         const actions = [
             <FlatButton
                 label="Cancel"
                 secondary={true}
-                onTouchTap={this.props.handleCancel}
+                onTouchTap={this.props.buttonCallback}
             />,
             <FlatButton
                 label="Submit"
                 primary={true}
-                disabled={true}
-                onTouchTap={this.props.handleSubmit}
+                disabled={false}
+                onTouchTap={this.login}
             />
         ];
 
         return (
-            <Dialog
-                title="Dialog With Date Picker"
+            <Dialog className="text-center"
+                title="Login"
                 actions={actions}
                 modal={true}
                 open={this.props.open}
-                onRequestClose={this.props.handleCancel} >
-
-                Open a Date Picker dialog from within a dialog.
-                <DatePicker hintText="Date Picker" />
+                onRequestClose={this.props.buttonCallback} >
+                <TextField
+                    floatingLabelText="Username"
+                /><br/>
+                <TextField
+                    floatingLabelText="Password"
+                />
             </Dialog>
         );
     }
@@ -44,8 +54,7 @@ class LoginDialog extends React.Component {
 
 LoginDialog.propTypes = {
     open: React.PropTypes.bool.isRequired,
-    handleCancel: React.PropTypes.func.isRequired,
-    handleSubmit: React.PropTypes.func.isRequired
+    buttonCallback: React.PropTypes.func.isRequired
 };
 LoginDialog.defaultProps = { open: false };
 
