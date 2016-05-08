@@ -2,29 +2,54 @@ import Firebase from 'firebase';
 
 export default class Character {
     constructor(characterId) {
-        this.url = config.firebase.url + '/characters/' + characterId + '/';
+        this.url = config.firebase.url;
+        this.firebase = new Firebase(this.url);
         if (characterId) {
-            this.character = new Firebase(this.url);
+            this.characterFBRef = this.firebase.child('/characters/' + characterId);
+        } else {
+            this.characterFBRef = this.newCharacter();
         }
-        this.character = this.newCharacter();
     }
 
+
+    // Bind firebase character to react component
+    bindFireBaseCharacter = (component) => {
+        var parent = this;
+        this.characterFBRef.on('value', function(snapshot) {
+            parent.character = snapshot.val();
+            component.setState({character: parent});
+        });
+    };
+
+    unBindFireBaseCharacter = () => {
+        this.characterFBRef.off();
+    };
+
+
+    // DML
     newCharacter = () => {
         return null;
     };
 
     deleteCharacter = () => {
-        this.character.delete();
+        this.characterFBRef.delete();
     };
 
-    bindFireBaseCharacter = (component) => {
-        component.character = this.character;
-        component.character.on('value', function(snapshot) {
-            component.setState(snapshot.val());
-        });
+    updateCharacter = (path, value, callback) => {
+        let updateHash = {};
+        updateHash[path] = value;
+        this.characterFBRef.update(updateHash);
     };
 
+    pushCharacter = (path, value, callback) => {
+
+    };
+
+
+    // Field Getters
     characterName = () => {
-        return this.character.characterName;
+        if (this.character) {
+            return this.character.characterName;
+        }
     };
 }

@@ -21,7 +21,7 @@ export default class Profile extends React.Component {
                     name="characterName"
                     floatingLabelText="Character Name"
                     value={this.props.characterName}
-                    onChange={this.props.onCharacterValueUpdate}
+                    onChange={this.updateCharacter}
                     />
             </div>
         );

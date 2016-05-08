@@ -4,45 +4,32 @@ import Firebase from 'firebase';
 
 import Profile from './sheet/profile';
 
-/**
- * Bind character sheet to Firebase object
- * @param  {Object} component      Sheet component to bind to.
- * @param  {string} characterId    Firebase ID of the character sheet
- */
-function bindFireBaseCharacter(component, characterId) {
-    var url = config.firebase.url + '/characters/' + characterId + "/";
-    component.character = new Firebase(url);
-    component.character.on('value', function(snapshot) {
-        component.setState(snapshot.val());
-    });
-}
+import Character from '../model/character';
 
 export default class Sheet extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {character: new Character(this.props.characterId)};
     }
 
     componentWillReceiveProps() {
         if (this.props.characterId !== nextProps.characterId) {
-            bindFireBaseCharacter(this, "1");
+            let nextCharacter = new Character(nextProps.characterId);
+            this.state.character.unBindFireBaseCharacter();
+            nextCharacter.bindFireBaseCharacter(this);
         }
     }
 
     componentWillMount() {
-        bindFireBaseCharacter(this, "1");
+        this.state.character.bindFireBaseCharacter(this);
     }
 
     componentWillUnmount() {
-        this.character.off();
+        this.state.character.unBindFireBaseCharacter();
     }
 
-    onCharacterValueUpdate = (e, text, callback) => {
-        let fieldName = e.currentTarget.name;
-        let fieldValue = e.target.value;
-        let updateHash = {};
-        updateHash[fieldName] = fieldValue;
-        this.character.update(updateHash);
+    updateCharacterValueCallback = (path, value) => {
+        this.state.character.updateCharacter(path, value);
     };
 
     render() {
@@ -51,12 +38,12 @@ export default class Sheet extends React.Component {
                 className="sheet-paper"
                 zDepth={1}>
                 <Profile
-                    characterName={this.state.characterName}
-                    onCharacterValueUpdate={this.onCharacterValueUpdate}
+                    characterName={this.state.character.characterName()}
+                    onCharacterValueUpdate={this.updateCharacterValueCallback}
                 />
                 <Profile
-                    characterName={this.state.characterName}
-                    onCharacterValueUpdate={this.onCharacterValueUpdate}
+                    characterName={this.state.character.characterName()}
+                    onCharacterValueUpdate={this.updateCharacterValueCallback}
                 />
             </Paper>
         );
