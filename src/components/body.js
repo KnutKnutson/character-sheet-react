@@ -8,6 +8,8 @@ import Sheet from './sheet';
 
 import CustomTheme from '../theme';
 
+import Character from '../model/character';
+
 @ThemeDecorator(ThemeManager.getMuiTheme(CustomTheme))
 class Body extends React.Component {
     constructor(props) {
@@ -36,7 +38,7 @@ class Body extends React.Component {
         return (
             <div>
                 <Header {...this.props} />
-                <Sheet />
+                <Sheet characterId={1} {...this.props} />
             </div>
         );
     }

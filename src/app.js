@@ -4,7 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Body from './components/body';
 
-import Auth from './util/auth';
+import auth from './util/auth';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -12,13 +12,11 @@ import Auth from './util/auth';
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-var auth = new Auth();
-var authdata = auth.authenticate();
-console.log(authdata);
-
 class App extends React.Component {
     constructor(props) {
         super(props);
+        //console.log('authdata');
+        //console.log(auth.authenticate());
     }
 
     render() {

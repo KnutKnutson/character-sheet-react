@@ -5,18 +5,26 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import TextField from 'material-ui/lib/text-field';
 
-import Auth from '../../util/auth';
+import Form from './form';
+import auth from '../../util/auth';
 
-class SignupDialog extends React.Component {
+class SignupDialog extends Form {
     constructor(props) {
         super(props);
         this.state = { };
     }
 
     signup = () => {
-        var auth = new Auth();
-        auth.createUser();
-        this.props.buttonCallback();
+        auth.createUser(this.state.email, this.state.password, this.signupCallback);
+    };
+
+    signupCallback = (error, userData) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(userData);
+            this.props.buttonCallback();
+        }
     };
 
     render() {
@@ -40,15 +48,27 @@ class SignupDialog extends React.Component {
                     actions={actions}
                     modal={true}
                     open={this.props.open}
+                    autoScrollBodyContent={true}
                     onRequestClose={this.props.buttonCallback} >
                 <TextField
-                    floatingLabelText="Username"
+                    name="email"
+                    floatingLabelText="Email"
+                    onChange={this.onChange}
+                    onBlur={this.onBlur}
                 /><br/>
                 <TextField
+                    name="password"
                     floatingLabelText="Password"
+                    type="password"
+                    onChange={this.onChange}
+                    onBlur={this.onBlur}
                 /><br/>
                 <TextField
+                    name="verifyPassword"
                     floatingLabelText="Verify Password"
+                    type="password"
+                    onChange={this.onChange}
+                    onBlur={this.onBlur}
                 />
             </Dialog>
         );

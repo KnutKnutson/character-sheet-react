@@ -4,6 +4,12 @@ export default class Form extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            alertVisible: false,
+            alertErrorText: '',
+            validationErrors: {},
+            touchedFields: {}
+        };
     }
 
     updateField = (e, text, callback) => {
@@ -23,7 +29,7 @@ export default class Form extends React.Component {
     };
 
     onBlur = (e, text, callback) => {
-        this.state.touchedFields[e.currentTarget.name] = true;
+        //this.state.touchedFields[e.currentTarget.name] = true;
         this.updateField(e, text, callback);
     };
 
@@ -52,12 +58,12 @@ export default class Form extends React.Component {
 
     renderAlert = () => {
         if (this.state.alertVisible) {
-            return (
-                <Alert
-                    onDismiss={this.handleAlertDismiss} >
-                    {this.state.alertErrorText}
-                </Alert>
-            );
+            //return (
+            //    <Alert
+            //        onDismiss={this.handleAlertDismiss} >
+            //        {this.state.alertErrorText}
+            //    </Alert>
+            //);
         }
     };
 

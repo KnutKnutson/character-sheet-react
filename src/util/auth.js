@@ -1,8 +1,9 @@
 import Firebase from 'firebase';
 
-export default class Auth {
+class Auth {
     constructor() {
         this.firebase = new Firebase(config.firebase.url);
+        this.authData = this.firebase.getAuth();
     }
 
     authDataCallback = (authData) => {
@@ -13,41 +14,55 @@ export default class Auth {
         }
     };
 
-    authenticate = (callback) => {
-        return this.firebase.getAuth();
+    authenticate = () => {
+        this.authData = this.firebase.getAuth();
+        return this.authData;
     };
 
-    login = () => {
+    login = (email, password, callback) => {
+        let saveUser = this.saveUser;
         this.firebase.authWithPassword({
-            email    : "bobtony@firebase.com",
-            password : "correcthorsebatterystaple"
+            email    : email, //"bobtony@firebase.com",
+            password : password //"correcthorsebatterystaple"
         }, function(error, authData) {
             if (error) {
-                console.log("Login Failed!", error);
+                //console.log("Login Failed!", error);
             } else {
-                console.log("Authenticated successfully with payload:", authData);
+                //console.log("Authenticated successfully with payload:", authData);
+                saveUser(authData.uid, email);
             }
+            callback(error, authData);
         });
     };
 
-    createUser = () => {
+    logout = () => {
+        this.firebase.unauth();
+    };
+
+    createUser = (email, password, callback) => {
+        console.log('email: ', email, 'password: ', password);
+        let login = this.login;
         this.firebase.createUser({
-            email    : "bobtony@firebase.com",
-            password : "correcthorsebatterystaple"
+            email    : email, //"bobtony@firebase.com",
+            password : password //"correcthorsebatterystaple"
         }, function(error, userData) {
             if (error) {
                 console.log("Error creating user:", error);
+                callback(error, userData);
             } else {
                 console.log("Successfully created user account with uid:", userData.uid);
+                login(email, password, callback);
             }
         });
     };
 
-    saveUser = () => {
-
+    saveUser = (uid, email) => {
+        this.firebase.child('users').child(uid).set({
+            email: email
+        });
     };
 
-    deleteUser = () => {
+    deleteUser = (email, password) => {
         this.firebase.removeUser({
             email    : "bobtony@firebase.com",
             password : "correcthorsebatterystaple"
@@ -60,7 +75,7 @@ export default class Auth {
         });
     };
 
-    changeEmail = () => {
+    changeEmail = (oldEmail, newEmail, pass) => {
         this.firebase.changeEmail({
             oldEmail : "bobtony@firebase.com",
             newEmail : "bobtony@google.com",
@@ -74,7 +89,7 @@ export default class Auth {
         });
     };
 
-    changePassword = () => {
+    changePassword = (email, oldPass, newPass) => {
         this.firebase.changePassword({
             email       : "bobtony@firebase.com",
             oldPassword : "correcthorsebatterystaple",
@@ -86,9 +101,9 @@ export default class Auth {
                 console.log("Error changing password:", error);
             }
         });
-    }
+    };
 
-    resetPassword = () => {
+    resetPassword = (email) => {
         this.firebase.resetPassword({
             email : "bobtony@firebase.com"
         }, function(error) {
@@ -98,5 +113,7 @@ export default class Auth {
                 console.log("Error sending password reset email:", error);
             }
         });
-    }
+    };
 }
+var auth = new Auth();
+export default auth;

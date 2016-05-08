@@ -5,18 +5,27 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import TextField from 'material-ui/lib/text-field';
 
-import Auth from '../../util/auth';
+import Form from './form';
+import auth from '../../util/auth';
 
-class LoginDialog extends React.Component {
+class LoginDialog extends Form {
     constructor(props) {
         super(props);
         this.state = { };
     }
 
     login = () => {
-        var auth = new Auth();
-        auth.login();
+        auth.login(this.state.email, this.state.password, this.loginCallback);
         this.props.buttonCallback();
+    };
+
+    loginCallback = (error, userData) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(userData);
+            this.props.buttonCallback();
+        }
     };
 
     render() {
@@ -40,12 +49,20 @@ class LoginDialog extends React.Component {
                 actions={actions}
                 modal={true}
                 open={this.props.open}
+                autoScrollBodyContent={true}
                 onRequestClose={this.props.buttonCallback} >
                 <TextField
-                    floatingLabelText="Username"
+                    name="email"
+                    floatingLabelText="Email"
+                    onChange={this.onChange}
+                    onBlur={this.onBlur}
                 /><br/>
                 <TextField
+                    name="password"
                     floatingLabelText="Password"
+                    onChange={this.onChange}
+                    onBlur={this.onBlur}
+                    type="password"
                 />
             </Dialog>
         );
