@@ -21,7 +21,7 @@ export default class Profile extends React.Component {
         return (
             <SheetFragment
                 title="Profile"
-                initiallyExpanded={true}
+                initiallyExpanded={false}
             >
                 <AttributeTextField
                     expandable={true}

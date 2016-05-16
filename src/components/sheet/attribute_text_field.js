@@ -1,6 +1,7 @@
 import React from 'react';
 import Firebase from 'firebase';
 
+import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 
 export default class AttributeTextField extends React.Component {
@@ -10,8 +11,12 @@ export default class AttributeTextField extends React.Component {
 
     getWidth = () => {
         switch (this.props.width) {
+            case 'one-fifth':
+                return '48px';
             case 'one-third':
                 return '80px';
+            case 'two-fifth':
+                return '96px';
             case 'one-half':
                 return '124px';
             case 'two-third':

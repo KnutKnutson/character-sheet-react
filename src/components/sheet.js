@@ -45,6 +45,22 @@ export default class Sheet extends React.Component {
                     character={this.state.character}
                     onCharacterValueUpdate={this.updateCharacterValueCallback}
                 />
+                <Profile
+                    character={this.state.character}
+                    onCharacterValueUpdate={this.updateCharacterValueCallback}
+                />
+                <Profile
+                    character={this.state.character}
+                    onCharacterValueUpdate={this.updateCharacterValueCallback}
+                />
+                <Profile
+                    character={this.state.character}
+                    onCharacterValueUpdate={this.updateCharacterValueCallback}
+                />
+                <Profile
+                    character={this.state.character}
+                    onCharacterValueUpdate={this.updateCharacterValueCallback}
+                />
             </Paper>
         );
     }
