@@ -21,6 +21,17 @@
     text-align: center;
 }
 .sheet-fragment {
+    margin: .5em;
+    width: 300px;
+    float: left;
+    text-align: center;
+}
+.skinny {
+    max-width: 300px;
+}
+.alert {
+    background-color: #FF5252;
+    color: white;
     margin: 1em;
 }
 

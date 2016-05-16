@@ -6,6 +6,14 @@ class Auth {
         this.authData = this.firebase.getAuth();
     }
 
+    bind = (component) => {
+        var parent = this;
+        this.firebase.onAuth(function(authData) {
+            parent.authData = authData;
+            component.setState({authData: authData});
+        });
+    };
+
     authDataCallback = (authData) => {
         if (authData) {
             console.log("User " + authData.uid + " is logged in with " + authData.provider);

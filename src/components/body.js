@@ -10,11 +10,12 @@ import CustomTheme from '../theme';
 
 import Character from '../model/character';
 
+import auth from '../util/auth';
+
 @ThemeDecorator(ThemeManager.getMuiTheme(CustomTheme))
 class Body extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
     componentWillMount() {
@@ -35,10 +36,13 @@ class Body extends React.Component {
     }
 
     render() {
+        let loggedIn = this.props.authData !== null;
         return (
             <div>
-                <Header {...this.props} />
-                <Sheet characterId={1} {...this.props} />
+                <Header authData={this.props.authData} {...this.props} />
+                {
+                    loggedIn ? <Sheet characterId={1} {...this.props} /> : null
+                }
             </div>
         );
     }

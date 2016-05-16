@@ -15,13 +15,19 @@ injectTapEventPlugin();
 class App extends React.Component {
     constructor(props) {
         super(props);
-        //console.log('authdata');
-        //console.log(auth.authenticate());
+        this.state = {
+            authData: null
+        };
+    }
+
+    componentWillMount() {
+        auth.bind(this);
     }
 
     render() {
         return (
           <Body
+              authData={this.state.authData}
               {...this.props}
           />
         );

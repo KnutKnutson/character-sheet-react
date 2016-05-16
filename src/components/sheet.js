@@ -38,11 +38,11 @@ export default class Sheet extends React.Component {
                 className="sheet-paper"
                 zDepth={1}>
                 <Profile
-                    characterName={this.state.character.characterName()}
+                    character={this.state.character}
                     onCharacterValueUpdate={this.updateCharacterValueCallback}
                 />
                 <Profile
-                    characterName={this.state.character.characterName()}
+                    character={this.state.character}
                     onCharacterValueUpdate={this.updateCharacterValueCallback}
                 />
             </Paper>

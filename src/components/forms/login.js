@@ -1,8 +1,10 @@
 import React from 'react';
+
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
+import Paper from 'material-ui/lib/paper';
 import RaisedButton from 'material-ui/lib/raised-button';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import TextField from 'material-ui/lib/text-field';
 
 import Form from './form';
@@ -11,46 +13,61 @@ import auth from '../../util/auth';
 class LoginDialog extends Form {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = {errorMessage: null };
     }
 
     login = () => {
+        this.setState({errorMessage: null});
         auth.login(this.state.email, this.state.password, this.loginCallback);
-        this.props.buttonCallback();
+        //this.props.buttonCallback();
     };
 
     loginCallback = (error, userData) => {
         if (error) {
             console.log(error);
+            this.setState({errorMessage: error});
         } else {
-            console.log(userData);
+            //console.log(userData);
             this.props.buttonCallback();
         }
+    };
+
+    signUp = () => {
+        this.props.signUp();
     };
 
     render() {
         const actions = [
             <FlatButton
-                label="Cancel"
+                label="Sign Up"
                 secondary={true}
+                onTouchTap={this.signUp}
+            />,
+            <RaisedButton
+                label="Cancel"
+                default={true}
                 onTouchTap={this.props.buttonCallback}
             />,
-            <FlatButton
+            <RaisedButton
                 label="Submit"
-                primary={true}
+                secondary={true}
                 disabled={false}
                 onTouchTap={this.login}
             />
         ];
 
         return (
-            <Dialog className="text-center"
+            <Dialog
+                className="text-center"
                 title="Login"
                 actions={actions}
                 modal={true}
                 open={this.props.open}
                 autoScrollBodyContent={true}
                 onRequestClose={this.props.buttonCallback} >
+                <Paper zDepth={2} className="alert">
+                    {this.state.errorMessage ? this.state.errorMessage.message : null}
+                </Paper>
                 <TextField
                     name="email"
                     floatingLabelText="Email"

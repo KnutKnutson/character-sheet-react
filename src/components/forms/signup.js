@@ -29,14 +29,14 @@ class SignupDialog extends Form {
 
     render() {
         const actions = [
-            <FlatButton
+            <RaisedButton
                 label="Cancel"
-                secondary={true}
+                default={true}
                 onTouchTap={this.props.buttonCallback}
             />,
-            <FlatButton
+            <RaisedButton
                 label="Submit"
-                primary={true}
+                secondary={true}
                 disabled={false}
                 onTouchTap={this.signup}
             />
