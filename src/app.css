@@ -22,9 +22,22 @@
 }
 .sheet-fragment {
     margin: .5em;
+    padding-left: 1em;
+    padding-right: 1em;
     width: 300px;
     float: left;
-    text-align: center;
+}
+.one-third {
+    width: 80px;
+    margin-right: 8px;
+}
+.one-half {
+    width: 124px;
+    margin-right: 8px;
+}
+.two-third {
+    width: 168px;
+    margin-right: 8px;
 }
 .skinny {
     max-width: 300px;

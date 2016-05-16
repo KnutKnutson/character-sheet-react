@@ -17,7 +17,9 @@ export default class SheetFragment extends React.Component {
     render() {
         return (
             <Card
-                className="sheet-fragment">
+                className="sheet-fragment"
+                initiallyExpanded={this.props.initiallyExpanded}
+            >
                 <CardHeader
                     title={this.props.title}
                     actAsExpander={true}

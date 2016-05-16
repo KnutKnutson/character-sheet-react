@@ -47,9 +47,82 @@ export default class Character {
 
 
     // Field Getters
+    // PROFILE
     characterName = () => {
         if (this.character) {
             return this.character.characterName;
         }
     };
+
+    playerName = () => {
+        if (this.character) {
+            return this.character.playerName;
+        }
+    };
+
+    characterClass = () => {
+        if (!this.character) { return null; }
+        return this.character.characterClass;
+    };
+
+    characterRace = () => {
+        if (!this.character) { return null; }
+        return this.character.characterRace;
+    };
+
+    level = () => {
+        if (!this.character) { return null; }
+        return this.character.level;
+    };
+
+    xp = () => {
+        if (!this.character) { return null; }
+        return this.character.xp;
+    };
+
+    alignment = () => {
+        if (!this.character) { return null; }
+        return this.character.alignment;
+    };
+
+    background = () => {
+        if (!this.character) { return null; }
+        return this.character.background;
+    };
+
+    age = () => {
+        if (!this.character) { return null; }
+        return this.character.age;
+    };
+
+    height = () => {
+        if (!this.character) { return null; }
+        return this.character.height;
+    };
+
+    weight = () => {
+        if (!this.character) { return null; }
+        return this.character.weight;
+    };
+
+    eyes = () => {
+        if (!this.character) { return null; }
+        return this.character.eyes;
+    };
+
+    skin = () => {
+        if (!this.character) { return null; }
+        return this.character.skin;
+    };
+
+    hair = () => {
+        if (!this.character) { return null; }
+        return this.character.hair;
+    };
+
+    backstory = () => {
+        if (!this.character) { return null; }
+        return this.character.backstory;
+    };
+
 }

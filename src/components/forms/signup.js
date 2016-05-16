@@ -1,8 +1,10 @@
 import React from 'react';
+import CircularProgress from 'material-ui/lib/circular-progress';
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
+import Paper from 'material-ui/lib/paper';
 import RaisedButton from 'material-ui/lib/raised-button';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import TextField from 'material-ui/lib/text-field';
 
 import Form from './form';
@@ -50,6 +52,10 @@ class SignupDialog extends Form {
                     open={this.props.open}
                     autoScrollBodyContent={true}
                     onRequestClose={this.props.buttonCallback} >
+                <Paper zDepth={2} className="alert">
+                    {this.state.errorMessage ? this.state.errorMessage.message : null}
+                </Paper>
+                <CircularProgress />
                 <TextField
                     name="email"
                     floatingLabelText="Email"

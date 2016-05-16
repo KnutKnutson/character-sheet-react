@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CircularProgress from 'material-ui/lib/circular-progress';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
@@ -68,6 +69,7 @@ class LoginDialog extends Form {
                 <Paper zDepth={2} className="alert">
                     {this.state.errorMessage ? this.state.errorMessage.message : null}
                 </Paper>
+                <CircularProgress />
                 <TextField
                     name="email"
                     floatingLabelText="Email"
