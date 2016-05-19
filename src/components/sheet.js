@@ -37,30 +37,32 @@ export default class Sheet extends React.Component {
             <Paper
                 className="sheet-paper"
                 zDepth={1}>
-                <Profile
-                    character={this.state.character}
-                    onCharacterValueUpdate={this.updateCharacterValueCallback}
-                />
-                <Profile
-                    character={this.state.character}
-                    onCharacterValueUpdate={this.updateCharacterValueCallback}
-                />
-                <Profile
-                    character={this.state.character}
-                    onCharacterValueUpdate={this.updateCharacterValueCallback}
-                />
-                <Profile
-                    character={this.state.character}
-                    onCharacterValueUpdate={this.updateCharacterValueCallback}
-                />
-                <Profile
-                    character={this.state.character}
-                    onCharacterValueUpdate={this.updateCharacterValueCallback}
-                />
-                <Profile
-                    character={this.state.character}
-                    onCharacterValueUpdate={this.updateCharacterValueCallback}
-                />
+                <div className="center-wrap">
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                    />
+                </div>
             </Paper>
         );
     }
