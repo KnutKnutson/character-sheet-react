@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/KnutKnutson/character-sheet-react#readme",
   "dependencies": {
-    "firebase": "^2.4.2",
+    "firebase": "^3.0.1",
     "material-ui": "^0.14.4",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
