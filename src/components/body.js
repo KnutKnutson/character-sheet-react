@@ -10,7 +10,7 @@ import CustomTheme from '../theme';
 
 import Character from '../model/character';
 
-import auth from '../util/auth';
+import auth from '../model/auth';
 
 @ThemeDecorator(ThemeManager.getMuiTheme(CustomTheme))
 class Body extends React.Component {
@@ -36,12 +36,12 @@ class Body extends React.Component {
     }
 
     render() {
-        let loggedIn = this.props.authData !== null;
+        console.log(this.props);
         return (
             <div>
-                <Header authData={this.props.authData} {...this.props} />
+                <Header loggedIn={this.props.loggedIn} {...this.props} />
                 {
-                    loggedIn ? <Sheet characterId={1} {...this.props} /> : null
+                    this.props.loggedIn ? <Sheet characterId={1} {...this.props} /> : null
                 }
             </div>
         );

@@ -5,7 +5,7 @@ import Avatar from 'material-ui/lib/avatar';
 import NavDrawer from './nav_drawer';
 import NavMenu from './nav_menu';
 
-import auth from '../util/auth';
+import auth from '../model/auth';
 
 export default class Header extends React.Component{
     constructor(props) {

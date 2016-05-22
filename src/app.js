@@ -4,7 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Body from './components/body';
 
-import auth from './util/auth';
+import auth from './model/auth';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -16,7 +16,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            authData: null
+            loggedIn: false
         };
     }
 
@@ -27,7 +27,7 @@ class App extends React.Component {
     render() {
         return (
           <Body
-              authData={this.state.authData}
+              loggedIn={this.state.loggedIn}
               {...this.props}
           />
         );

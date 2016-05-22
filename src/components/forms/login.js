@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 
 import Form from './form';
-import auth from '../../util/auth';
+import auth from '../../model/auth';
 
 class LoginDialog extends Form {
     constructor(props) {
@@ -69,7 +69,6 @@ class LoginDialog extends Form {
                 <Paper zDepth={2} className="alert">
                     {this.state.errorMessage ? this.state.errorMessage.message : null}
                 </Paper>
-                <CircularProgress />
                 <TextField
                     name="email"
                     floatingLabelText="Email"

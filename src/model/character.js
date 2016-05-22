@@ -1,9 +1,7 @@
-import Firebase from 'firebase';
 
 export default class Character {
     constructor(characterId) {
-        this.url = config.firebase.url;
-        this.firebase = new Firebase(this.url);
+        this.firebase = characterSheetFirebase.database();
         if (characterId) {
             this.characterFBRef = this.firebase.child('/characters/' + characterId);
         } else {

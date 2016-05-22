@@ -1,5 +1,0 @@
-export default class FirebaseConfig {
-    constructor() {
-        this.url = 'https://example.firebaseio.com/'
-    }
-}

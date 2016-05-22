@@ -14,16 +14,16 @@ import Share from 'material-ui/lib/svg-icons/social/share';
 import LoginDialog from './forms/login';
 import SignupDialog from './forms/signup';
 
-import auth from '../util/auth';
+import auth from '../model/auth';
 
 export default class NavMenu extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loginOpen: this.props.authData === null,
+            loginOpen: false,
             signupOpen: false,
-            authData: this.props.authData
+            loggedIn: this.props.loggedIn
         };
     }
 
@@ -62,7 +62,7 @@ export default class NavMenu extends React.Component {
                             }
                     targetOrigin={{horizontal: 'right', vertical: 'top'}}
                     anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
-                    {(this.props.authData !== null)
+                    {(this.props.loggedIn)
                         ? <MenuItem primaryText="Logout" leftIcon={<ExitToApp />} onTouchTap={this.logout} />
                         : <MenuItem primaryText="Login" leftIcon={<Person />} onTouchTap={this.openLoginDialog} />}
                     <MenuItem primaryText="Signup" leftIcon={<PersonAdd />} onTouchTap={this.openSignupDialog} />

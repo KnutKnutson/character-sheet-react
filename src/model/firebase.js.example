@@ -1,0 +1,10 @@
+import Firebase from 'firebase';
+
+var firebaseConfig = {
+  apiKey: "apiKey",
+  authDomain: "projectId.firebaseapp.com",
+  databaseURL: "https://databaseName.firebaseio.com"
+};
+
+var firebaseApp = Firebase.initializeApp(firebaseConfig);
+export default firebaseApp;
