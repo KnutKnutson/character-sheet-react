@@ -1,10 +1,22 @@
-import Firebase from 'firebase';
 
-var firebaseConfig = {
-  apiKey: "apiKey",
-  authDomain: "projectId.firebaseapp.com",
-  databaseURL: "https://databaseName.firebaseio.com"
-};
+class Firebase {
+    constructor() {
+        this.firebaseConfig = {
+            apiKey: "apiKey",
+            authDomain: "projectId.firebaseapp.com",
+            databaseURL: "https://databaseName.firebaseio.com"
+            storageBucket: "bucket",
+        };
 
-var firebaseApp = Firebase.initializeApp(firebaseConfig);
-export default firebaseApp;
+        this.firebaseApp = firebase.initializeApp(this.firebaseConfig);
+    }
+
+    app = () => {
+        return this.firebaseApp;
+    }
+
+}
+
+var csFirebase = new Firebase();
+export default csFirebase;
+
