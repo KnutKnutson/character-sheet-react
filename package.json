@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-css": "./node_modules/postcss-cli/bin/postcss -m --use precss -o build/app.css src/app.css",
-    "build": "./node_modules/webpack/bin/webpack.js && cp src/index.html build/index.html && cp config/config.js build/config.js && npm run build-css",
+    "build": "./node_modules/webpack/bin/webpack.js && cp src/index.html build/index.html && npm run build-css",
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base build/"
   },
   "repository": {
@@ -20,10 +20,10 @@
   "homepage": "https://github.com/KnutKnutson/character-sheet-react#readme",
   "dependencies": {
     "firebase": "^3.0.1",
-    "material-ui": "^0.14.4",
-    "react": "^0.14.8",
-    "react-dom": "^0.14.8",
-    "react-tap-event-plugin": "^0.2.2"
+    "material-ui": "^0.15.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-tap-event-plugin": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",

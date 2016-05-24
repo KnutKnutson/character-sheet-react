@@ -1,9 +1,9 @@
 import React from 'react';
-import Paper from 'material-ui/lib/paper';
 import Firebase from 'firebase';
 
-import Profile from './sheet/profile';
+import Paper from 'material-ui/Paper';
 
+import Profile from './sheet/profile';
 import Character from '../model/character';
 
 export default class Sheet extends React.Component {

@@ -1,8 +1,8 @@
 import React from 'react';
 import Firebase from 'firebase';
 
-import Paper from 'material-ui/lib/paper';
-import TextField from 'material-ui/lib/text-field';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
 
 export default class AttributeTextField extends React.Component {
     constructor(props) {

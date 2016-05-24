@@ -1,15 +1,16 @@
 import React from 'react';
-import IconButton from 'material-ui/lib/icon-button';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import Divider from 'material-ui/lib/divider';
 
-import Delete from 'material-ui/lib/svg-icons/action/delete';
-import ExitToApp from 'material-ui/lib/svg-icons/action/exit-to-app';
-import Person from 'material-ui/lib/svg-icons/social/person';
-import PersonAdd from 'material-ui/lib/svg-icons/social/person-add';
-import Share from 'material-ui/lib/svg-icons/social/share';
+import Divider from 'material-ui/Divider';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+
+import Delete from 'material-ui/svg-icons/action/delete';
+import ExitToApp from 'material-ui/svg-icons/action/exit-to-app';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Person from 'material-ui/svg-icons/social/person';
+import PersonAdd from 'material-ui/svg-icons/social/person-add';
+import Share from 'material-ui/svg-icons/social/share';
 
 import LoginDialog from './forms/login';
 import SignupDialog from './forms/signup';

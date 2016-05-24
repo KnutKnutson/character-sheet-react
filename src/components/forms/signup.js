@@ -1,11 +1,11 @@
 import React from 'react';
-import CircularProgress from 'material-ui/lib/circular-progress';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import Paper from 'material-ui/lib/paper';
-import RaisedButton from 'material-ui/lib/raised-button';
-import TextField from 'material-ui/lib/text-field';
+
+import CircularProgress from 'material-ui/CircularProgress';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 import Form from './form';
 import auth from '../../model/auth';
@@ -17,16 +17,7 @@ class SignupDialog extends Form {
     }
 
     signup = () => {
-        auth.createUser(this.state.email, this.state.password, this.signupCallback);
-    };
-
-    signupCallback = (error, userData) => {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log(userData);
-            this.props.buttonCallback();
-        }
+        auth.createUser(this.state.email, this.state.password, this.submitCallback);
     };
 
     render() {
@@ -34,9 +25,10 @@ class SignupDialog extends Form {
             <RaisedButton
                 label="Cancel"
                 default={true}
-                onTouchTap={this.props.buttonCallback}
+                onTouchTap={this.closeCallback}
             />,
             <RaisedButton
+                type="submit"
                 label="Submit"
                 secondary={true}
                 disabled={false}
@@ -51,9 +43,9 @@ class SignupDialog extends Form {
                     modal={true}
                     open={this.props.open}
                     autoScrollBodyContent={true}
-                    onRequestClose={this.props.buttonCallback} >
-                <Paper zDepth={2} className="alert">
-                    {this.state.errorMessage ? this.state.errorMessage.message : null}
+                    onRequestClose={this.closeCallback} >
+                <Paper zDepth={1} className={"alert " + (this.state.alertVisible ? null : "hidden")}>
+                    {this.state.alertMessage}
                 </Paper>
                 <TextField
                     name="email"

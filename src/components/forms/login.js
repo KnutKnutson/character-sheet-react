@@ -1,12 +1,11 @@
 import React from 'react';
 
-import CircularProgress from 'material-ui/lib/circular-progress';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import Paper from 'material-ui/lib/paper';
-import RaisedButton from 'material-ui/lib/raised-button';
-import TextField from 'material-ui/lib/text-field';
+import CircularProgress from 'material-ui/CircularProgress';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 import Form from './form';
 import auth from '../../model/auth';
@@ -14,35 +13,19 @@ import auth from '../../model/auth';
 class LoginDialog extends Form {
     constructor(props) {
         super(props);
-        this.state = {errorMessage: null };
     }
 
     login = () => {
-        this.setState({errorMessage: null});
-        auth.login(this.state.email, this.state.password, this.loginCallback);
-        //this.props.buttonCallback();
-    };
-
-    loginCallback = (error, userData) => {
-        if (error) {
-            console.log(error);
-            this.setState({errorMessage: error});
-        } else {
-            //console.log(userData);
-            this.props.buttonCallback();
-        }
-    };
-
-    closeCallback = () => {
-        this.setState({errorMessage: null});
-        this.props.buttonCallback();
+        auth.login(this.state.email, this.state.password, this.submitCallback);
     };
 
     signUp = () => {
+        this.handleAlertDismiss();
         this.props.signUp();
     };
 
     render() {
+        console.log(this.state);
         const actions = [
             <FlatButton
                 label="Sign Up"
@@ -52,9 +35,10 @@ class LoginDialog extends Form {
             <RaisedButton
                 label="Cancel"
                 default={true}
-                onTouchTap={this.props.buttonCallback}
+                onTouchTap={this.closeCallback}
             />,
             <RaisedButton
+                type="submit"
                 label="Submit"
                 secondary={true}
                 disabled={false}
@@ -71,8 +55,8 @@ class LoginDialog extends Form {
                 open={this.props.open}
                 autoScrollBodyContent={true}
                 onRequestClose={this.closeCallback} >
-                <Paper zDepth={2} className="alert">
-                    {this.state.errorMessage ? this.state.errorMessage : null}
+                <Paper zDepth={1} className={"alert " + (this.state.alertVisible ? null : "hidden")}>
+                    {this.state.alertMessage}
                 </Paper>
                 <TextField
                     name="email"

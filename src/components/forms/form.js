@@ -6,7 +6,7 @@ export default class Form extends React.Component {
         super(props);
         this.state = {
             alertVisible: false,
-            alertErrorText: '',
+            alertMessage: '',
             validationErrors: {},
             touchedFields: {}
         };
@@ -51,9 +51,22 @@ export default class Form extends React.Component {
     handleAlertShow = (text) => {
         this.setState({
             alertVisible: true,
-            alertErrorText: text,
+            alertMessage: text,
             submitInFlight: false
         });
+    };
+
+    closeCallback = () => {
+        this.handleAlertDismiss();
+        this.props.buttonCallback();
+    };
+
+    submitCallback = (error, userData) => {
+        if (error) {
+            this.handleAlertShow(error);
+        } else {
+            this.closeCallback();
+        }
     };
 
     renderAlert = () => {
@@ -61,7 +74,7 @@ export default class Form extends React.Component {
             //return (
             //    <Alert
             //        onDismiss={this.handleAlertDismiss} >
-            //        {this.state.alertErrorText}
+            //        {this.state.alertMessage}
             //    </Alert>
             //);
         }

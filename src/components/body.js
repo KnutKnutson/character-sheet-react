@@ -1,18 +1,8 @@
 import React from 'react';
-import LeftNav from 'material-ui/lib/left-nav';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-import ThemeDecorator from 'material-ui/lib/styles/theme-decorator';
 
 import Header from './navigation.js';
 import Sheet from './sheet';
 
-import CustomTheme from '../theme';
-
-import Character from '../model/character';
-
-import auth from '../model/auth';
-
-@ThemeDecorator(ThemeManager.getMuiTheme(CustomTheme))
 class Body extends React.Component {
     constructor(props) {
         super(props);
@@ -36,8 +26,6 @@ class Body extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-        let loggedIn = this.props.loggedIn;
         return (
             <div>
                 <Header loggedIn={this.props.loggedIn} {...this.props} />

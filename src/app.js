@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Body from './components/body';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import Body from './components/body';
+import customTheme from './theme';
 import auth from './model/auth';
 
 // Needed for onTouchTap
@@ -26,10 +28,12 @@ class App extends React.Component {
 
     render() {
         return (
-          <Body
-              loggedIn={this.state.loggedIn}
-              {...this.props}
-          />
+            <MuiThemeProvider muiTheme={customTheme}>
+                <Body
+                    loggedIn={this.state.loggedIn}
+                    {...this.props}
+                />
+            </MuiThemeProvider>
         );
     }
 }

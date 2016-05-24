@@ -1,12 +1,11 @@
 import React from 'react';
 
-import IconButton from 'material-ui/lib/icon-button';
-import LeftNav from 'material-ui/lib/left-nav';
-import Menu from 'material-ui/lib/svg-icons/navigation/menu';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import RaisedButton from 'material-ui/lib/raised-button';
-import Tab from 'material-ui/lib/tabs/tab';
-import Tabs from 'material-ui/lib/tabs/tabs';
+import IconButton from 'material-ui/IconButton';
+import LeftNav from 'material-ui/Drawer';
+import Menu from 'material-ui/svg-icons/navigation/menu';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Tabs, Tab} from 'material-ui/Tabs';
 
 export default class NavDrawer extends React.Component {
 
@@ -20,6 +19,7 @@ export default class NavDrawer extends React.Component {
     handleClose = () => this.setState({open: false});
 
     render() {
+        let forceNavDown = {'top': '64px'}
         return (
             <div>
                 <IconButton
@@ -35,6 +35,7 @@ export default class NavDrawer extends React.Component {
                     docked={false}
                     width={300}
                     open={this.state.open}
+                    containerStyle={forceNavDown}
                     onRequestChange={open => this.setState({open})} >
 
                     <Tabs>

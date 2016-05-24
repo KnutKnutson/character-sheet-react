@@ -1,24 +1,22 @@
-import Colors from 'material-ui/lib/styles/colors';
-import ColorManipulator from 'material-ui/lib/utils/color-manipulator';
-import Spacing from 'material-ui/lib/styles/spacing';
-import zIndex from 'material-ui/lib/styles/zIndex';
+import {cyan500, blueGrey500, blueGrey700, blueGrey100, redA200, grey100, grey500, darkBlack, white, grey300}
+    from 'material-ui/styles/colors';
+import {fade} from 'material-ui/utils/colorManipulator';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-export default {
-    spacing: Spacing,
-    zIndex: zIndex,
+export default getMuiTheme({
     fontFamily: 'Roboto, sans-serif',
     palette: {
-        primary1Color: Colors.blueGrey500,
-        primary2Color: Colors.blueGrey700,
-        primary3Color: Colors.blueGrey100,
-        accent1Color: Colors.redA200,
-        accent2Color: Colors.grey100,
-        accent3Color: Colors.grey500,
-        textColor: Colors.darkBlack,
-        alternateTextColor: Colors.white,
-        canvasColor: Colors.white,
-        borderColor: Colors.grey300,
-        disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
-        pickerHeaderColor: Colors.cyan500
+        primary1Color: blueGrey500,
+        primary2Color: blueGrey700,
+        primary3Color: blueGrey100,
+        accent1Color: redA200,
+        accent2Color: grey100,
+        accent3Color: grey500,
+        textColor: darkBlack,
+        alternateTextColor: white,
+        canvasColor: white,
+        borderColor: grey300,
+        disabledColor: fade(darkBlack, 0.3),
+        pickerHeaderColor: cyan500
     }
-};
+});

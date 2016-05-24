@@ -20,6 +20,9 @@
 .text-center {
     text-align: center;
 }
+.hidden {
+    display: none;
+}
 .center-wrap {
     margin: 0 auto;
     max-width:960px;
@@ -50,8 +53,8 @@
     max-width: 300px;
 }
 .alert {
-    background-color: #FF5252;
-    color: white;
-    margin: 1em;
+    color: #FF5252;
+    margin: .5em;
+    padding: .5em;
 }
 
