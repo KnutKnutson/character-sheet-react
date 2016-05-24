@@ -1,9 +1,10 @@
+import csFirebase from './firebase';
 
 export default class Character {
     constructor(characterId) {
-        this.firebase = characterSheetFirebase.database();
+        this.firebase = csFirebase.app().database();
         if (characterId) {
-            this.characterFBRef = this.firebase.child('/characters/' + characterId);
+            this.characterFBRef = this.firebase.ref('/characters/' + characterId);
         } else {
             this.characterFBRef = this.newCharacter();
         }

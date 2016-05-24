@@ -33,6 +33,11 @@ class LoginDialog extends Form {
         }
     };
 
+    closeCallback = () => {
+        this.setState({errorMessage: null});
+        this.props.buttonCallback();
+    };
+
     signUp = () => {
         this.props.signUp();
     };
@@ -65,9 +70,9 @@ class LoginDialog extends Form {
                 modal={true}
                 open={this.props.open}
                 autoScrollBodyContent={true}
-                onRequestClose={this.props.buttonCallback} >
+                onRequestClose={this.closeCallback} >
                 <Paper zDepth={2} className="alert">
-                    {this.state.errorMessage ? this.state.errorMessage.message : null}
+                    {this.state.errorMessage ? this.state.errorMessage : null}
                 </Paper>
                 <TextField
                     name="email"

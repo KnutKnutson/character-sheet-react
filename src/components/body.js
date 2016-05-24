@@ -37,6 +37,7 @@ class Body extends React.Component {
 
     render() {
         console.log(this.props);
+        let loggedIn = this.props.loggedIn;
         return (
             <div>
                 <Header loggedIn={this.props.loggedIn} {...this.props} />

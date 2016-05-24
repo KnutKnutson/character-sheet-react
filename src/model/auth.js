@@ -30,17 +30,14 @@ class Auth {
         }
     };
 
-    authenticate = () => {
-        //this.authData = this.firebase.getAuth();
-        //return this.authData;
-    };
-
     login = (email, password, callback) => {
-        let saveUser = this.saveUser;
+        //let callback = callback;
         this.auth.signInWithEmailAndPassword(
             email,   //"bobtony@firebase.com",
             password //"correcthorsebatterystaple"
-        ).catch(function(error) {
+        ).then(function() {
+            callback(null, true);
+        }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             callback(errorMessage);
@@ -61,11 +58,12 @@ class Auth {
         this.auth.createUserWithEmailAndPassword(
             email, //"bobtony@firebase.com",
             password //"correcthorsebatterystaple"
-        ).catch(function(error) {
+        ).then(function() {
+            callback(null, true);
+        }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             callback(errorMessage);
-
         });
     };
 
