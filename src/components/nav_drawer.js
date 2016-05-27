@@ -1,10 +1,13 @@
 import React from 'react';
 
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import LeftNav from 'material-ui/Drawer';
+import {List, ListItem} from 'material-ui/List';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import Subheader from 'material-ui/Subheader';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
 export default class NavDrawer extends React.Component {
@@ -19,7 +22,6 @@ export default class NavDrawer extends React.Component {
     handleClose = () => this.setState({open: false});
 
     render() {
-        let forceNavDown = {'top': '64px'}
         return (
             <div>
                 <IconButton
@@ -33,34 +35,22 @@ export default class NavDrawer extends React.Component {
                 <LeftNav
                     className="navigation-drawer"
                     docked={false}
-                    width={300}
+                    width={250}
                     open={this.state.open}
-                    containerStyle={forceNavDown}
                     onRequestChange={open => this.setState({open})} >
 
-                    <Tabs>
-                        <Tab label="My Sheets" >
-                            <MenuItem
-                                onTouchTap={this.handleClose} >
+                    <AppBar
+                        title="Characters"
+                        iconElementLeft=""
+                        iconElementRight=""
+                        />
 
-                                Menu Item
-                            </MenuItem>
-
-                            <MenuItem
-                                onTouchTap={this.handleClose} >
-
-                                Menu Item 2
-                            </MenuItem>
-                        </Tab>
-
-                        <Tab label="Friend's Sheets" >
-                            <MenuItem
-                                onTouchTap={this.handleClose} >
-
-                                Menu Item
-                            </MenuItem>
-                        </Tab>
-                    </Tabs>
+                    <List>
+                        <Subheader>My Characters</Subheader>
+                        <ListItem onTouchTap="" primaryText="Sent mail"  />
+                        <ListItem onTouchTap="" primaryText="Drafts"  />
+                        <Subheader>Allies</Subheader>
+                    </List>
                 </LeftNav>
             </div>
         );

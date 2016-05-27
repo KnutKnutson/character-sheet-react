@@ -33,7 +33,6 @@ export default class Sheet extends React.Component {
     };
 
     render() {
-        console.log(this.props);
         return (
             <Paper
                 className="sheet-paper"

@@ -44,8 +44,23 @@ export default class Character {
 
     };
 
+    shareCharacter = (characterId, emailsToShareWith) => {
+        for (var email of emailsToShareWith) {
+            this.characterFBRef.child(email).push(characterId);
+        }
+    };
+
 
     // Field Getters
+    userCharacters = () => {
+
+    };
+
+    friendCharacters = () => {
+
+    };
+
+
     // PROFILE
     characterName = () => {
         if (this.character) {
@@ -123,5 +138,122 @@ export default class Character {
         if (!this.character) { return null; }
         return this.character.backstory;
     };
+
+    // ATTRIBUTES
+    inspiration = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    proficiencyBonus = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    passiveWisdom = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    strength = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    dexterity = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    constitution = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    intelligence = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    wisdom = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    charisma = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    strengthModifier = () => {
+        if (!this.character) { return null; }
+
+    } ;
+
+    dexterityModifier = () => {
+        if (!this.character) { return null; }
+
+    } ;
+
+    constitutionModifier = () => {
+        if (!this.character) { return null; }
+
+    } ;
+
+    intelligenceModifier = () => {
+        if (!this.character) { return null; }
+
+    } ;
+
+    wisdomModifier = () => {
+        if (!this.character) { return null; }
+
+    } ;
+
+    charismaModifier = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    strengthSavingThrow = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    dexteritySavingThrow = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    constitutionSavingThrow = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    intelligenceSavingThrow = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    wisdomSavingThrow = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    charismaSavingThrow = () => {
+        if (!this.character) { return null; }
+
+    };
+
+
+    // COMBAT STATS
+
+    // SPELLS
+
+    // FEATURES
+
+    // EQUIPMENT
+
+    // ALLIES
 
 }
