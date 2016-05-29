@@ -34,14 +34,21 @@ export default class NavDrawer extends React.Component {
 
                 <LeftNav
                     className="navigation-drawer"
-                    docked={false}
+                    docked={true}
                     width={250}
                     open={this.state.open}
                     onRequestChange={open => this.setState({open})} >
 
                     <AppBar
                         title="Characters"
-                        iconElementLeft=""
+                        iconElementLeft={
+                            <IconButton
+                                className="menu-button"
+                                label="Toggle NavDrawer"
+                                onTouchTap={this.handleToggle} >
+
+                                <Menu />
+                            </IconButton>}
                         iconElementRight=""
                         />
 

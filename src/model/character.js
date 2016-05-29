@@ -145,17 +145,17 @@ export default class Character {
 
     inspiration = () => {
         if (!this.character) { return null; }
-
+        return this.character.inspiration;
     };
 
     proficiencyBonus = () => {
         if (!this.character) { return null; }
-
+        return this.character.proficiencyBonus;
     };
 
     passiveWisdom = () => {
         if (!this.character) { return null; }
-
+        return this.character.passiveWisdom;
     };
 
     strength = () => {

@@ -20,14 +20,17 @@
 .text-center {
     text-align: center;
 }
+
 .hidden {
     display: none;
 }
+
 .center-wrap {
     margin: 0 auto;
     max-width:960px;
     text-align: center;
 }
+
 .sheet-fragment {
     margin: .5em;
     padding-left: 1em;
@@ -35,23 +38,9 @@
     width: 300px;
     display: inline-block;
     text-align: start;
-    /*float: left;*/
+    float: left;
 }
-.one-third {
-    width: 80px;
-    margin-right: 8px;
-}
-.one-half {
-    width: 124px;
-    margin-right: 8px;
-}
-.two-third {
-    width: 168px;
-    margin-right: 8px;
-}
-.skinny {
-    max-width: 300px;
-}
+
 .alert {
     color: #FF5252;
     margin: .5em;

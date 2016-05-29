@@ -22,7 +22,7 @@ export default class Attributes extends React.Component {
                 initiallyExpanded={false}
             >
                 <AttributeTextField
-                    width="one-half"
+                    width="one-third"
                     expandable={true}
                     name="inspiration"
                     floatingLabelText="Inspiration"
@@ -30,7 +30,7 @@ export default class Attributes extends React.Component {
                     onChange={this.updateCharacter}
                 />
                 <AttributeTextField
-                    width="one-half"
+                    width="two-third"
                     expandable={true}
                     name="proficiencyBonus"
                     floatingLabelText="Proficiency Bonus"
