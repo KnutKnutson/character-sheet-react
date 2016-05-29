@@ -4,6 +4,7 @@ import Firebase from 'firebase';
 import Paper from 'material-ui/Paper';
 
 import Profile from './sheet/profile';
+import Attributes from './sheet/attributes';
 import Character from '../model/character';
 
 export default class Sheet extends React.Component {
@@ -42,7 +43,7 @@ export default class Sheet extends React.Component {
                         character={this.state.character}
                         onCharacterValueUpdate={this.updateCharacterValueCallback}
                     />
-                    <Profile
+                    <Attributes
                         character={this.state.character}
                         onCharacterValueUpdate={this.updateCharacterValueCallback}
                     />

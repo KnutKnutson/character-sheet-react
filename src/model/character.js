@@ -61,7 +61,8 @@ export default class Character {
     };
 
 
-    // PROFILE
+    // PROFILE --------------------------------------------
+
     characterName = () => {
         if (this.character) {
             return this.character.characterName;
@@ -139,7 +140,9 @@ export default class Character {
         return this.character.backstory;
     };
 
-    // ATTRIBUTES
+
+    // ATTRIBUTES --------------------------------------------
+
     inspiration = () => {
         if (!this.character) { return null; }
 
@@ -245,15 +248,106 @@ export default class Character {
 
     };
 
+    acrobatics = () => {
+      if (!this.character) { return null; }
 
-    // COMBAT STATS
+    };
 
-    // SPELLS
+    animalHandling = () => {
+      if (!this.character) { return null; }
 
-    // FEATURES
+    };
 
-    // EQUIPMENT
+    arcana = () => {
+      if (!this.character) { return null; }
 
-    // ALLIES
+    };
+
+    athletics = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    deception = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    history = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    insight = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    intimidation = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    investigation = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    medicine = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    nature = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    perception = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    performance = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    persuasion = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    religion = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    sleightOfHand = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    stealth = () => {
+      if (!this.character) { return null; }
+
+    };
+
+    survival = () => {
+      if (!this.character) { return null; }
+
+    };
+
+
+
+    // COMBAT STATS --------------------------------------------
+
+    // SPELLS --------------------------------------------
+
+    // FEATURES --------------------------------------------
+
+    // EQUIPMENT --------------------------------------------
+
+    // ALLIES --------------------------------------------
 
 }

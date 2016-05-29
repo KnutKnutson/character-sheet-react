@@ -22,7 +22,7 @@ export default class AttributeTextField extends React.Component {
             case 'two-third':
                 return '168px';
             default:
-                return '256px';
+                return '256px'; // full width
         }
     };
 
