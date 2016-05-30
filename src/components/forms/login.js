@@ -25,7 +25,6 @@ class LoginDialog extends Form {
     };
 
     render() {
-        console.log(this.state);
         const actions = [
             <FlatButton
                 label="Sign Up"

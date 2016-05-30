@@ -49,7 +49,6 @@ export default class NavDrawer extends React.Component {
 
                                 <Menu />
                             </IconButton>}
-                        iconElementRight=""
                         />
 
                     <List>

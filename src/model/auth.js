@@ -14,7 +14,7 @@ class Auth {
             } else {
                 parent.user = {};
             }
-            console.log(user);
+            //console.log(user);
             component.setState({
                 loggedIn: user !== null,
                 user: {}
@@ -54,7 +54,7 @@ class Auth {
     };
 
     createUser = (email, password, callback) => {
-        console.log('email: ', email, 'password: ', password);
+        //console.log('email: ', email, 'password: ', password);
         this.auth.createUserWithEmailAndPassword(
             email, //"bobtony@firebase.com",
             password //"correcthorsebatterystaple"
