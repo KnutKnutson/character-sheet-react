@@ -17,32 +17,49 @@ export default class Attributes extends React.Component {
         this.props.onCharacterValueUpdate(fieldName, fieldValue);
     };
 
+    abilityModifier = () => {
+        let abilityScore = this.props.value;
+        let modifier = 0;
+        if (!abilityScore) { return modifier; }
+        if (abilityScore) {
+            modifier = abilityScore - 10;
+        }
+        return Math.floor(modifier / 2);
+    };
+
+    renderModifier = () => {
+        if (!this.props.value) { return null; }
+        return (
+            <Paper
+                circle={true}
+                zDepth={1}
+                style={{
+                    width: '20px',
+                    height: '20px',
+                    paddingTop: '2px',
+                    marginLeft: '-.5em',
+                    margingTop: '-.5em',
+                    textAlign: 'center',
+                    display: 'inline-block'
+                }}
+            >
+                {this.abilityModifier()}
+            </Paper>
+        );
+    };
+
     render() {
         return (
             <div>
-                    <AttributeTextField
-                        width="one-fifth"
-                        expandable={true}
-                        name="strength"
-                        floatingLabelText="Strength"
-                        value={this.props.character.strength()}
-                        onChange={this.updateCharacter}
-                    />
-                    <Paper
-                        circle={true}
-                        zDepth={1}
-                        style={{
-                            width: '20px',
-                            height: '20px',
-                            paddingTop: '2px',
-                            marginLeft: '-.5em',
-                            margingTop: '-.5em',
-                            textAlign: 'center',
-                            display: 'inline-block'
-                        }}
-                    >
-                        {5}
-                    </Paper>
+                <AttributeTextField
+                    width="one-fifth"
+                    expandable={true}
+                    name={this.props.name}
+                    floatingLabelText={this.props.label}
+                    value={this.props.value}
+                    onChange={this.updateCharacter}
+                />
+                {this.renderModifier()}
             </div>
         );
     }

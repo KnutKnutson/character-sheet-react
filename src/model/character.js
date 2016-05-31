@@ -160,12 +160,12 @@ export default class Character {
 
     strength = () => {
         if (!this.character) { return null; }
-
+        return this.character.strength;
     };
 
     dexterity = () => {
         if (!this.character) { return null; }
-
+        return this.character.dexterity;
     };
 
     constitution = () => {

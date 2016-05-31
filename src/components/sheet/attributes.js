@@ -3,6 +3,7 @@ import Firebase from 'firebase';
 
 import Paper from 'material-ui/Paper';
 
+import Attribute from './attribute';
 import AttributeTextField from './attribute_text_field';
 import SheetFragment from './sheet_fragment';
 
@@ -15,6 +16,10 @@ export default class Attributes extends React.Component {
         let fieldName = e.currentTarget.name;
         let fieldValue = e.target.value;
         this.props.onCharacterValueUpdate(fieldName, fieldValue);
+    };
+
+    updateCharacterValueCallback = (path, value) => {
+        this.state.character.updateCharacter(path, value);
     };
 
     render() {
@@ -57,36 +62,17 @@ export default class Attributes extends React.Component {
                         float: 'left'
                     }}
                 >
-                    <AttributeTextField
-                        width="one-fifth"
-                        expandable={true}
-                        name="strength"
-                        floatingLabelText="Strength"
+                    <Attribute
+                        {...this.props}
+                        name='strength'
+                        label='Strength'
                         value={this.props.character.strength()}
-                        onChange={this.updateCharacter}
-                    />
-                    <Paper
-                        circle={true}
-                        zDepth={1}
-                        style={{
-                            width: '20px',
-                            height: '20px',
-                            paddingTop: '2px',
-                            marginLeft: '-.5em',
-                            margingTop: '-.5em',
-                            textAlign: 'center',
-                            display: 'inline-block'
-                        }}
-                        >
-                        {5}
-                    </Paper>
-                    <AttributeTextField
-                        width="one-fifth"
-                        expandable={true}
-                        name="dexterity"
-                        floatingLabelText="Dexterity"
+                        />
+                    <Attribute
+                        {...this.props}
+                        name='dexterity'
+                        label='Dexterity'
                         value={this.props.character.dexterity()}
-                        onChange={this.updateCharacter}
                     />
                 </Paper>
 
