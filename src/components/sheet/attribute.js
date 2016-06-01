@@ -50,7 +50,9 @@ export default class Attributes extends React.Component {
 
     render() {
         return (
-            <div>
+            <div
+                className="attribute">
+
                 <AttributeTextField
                     width="one-fifth"
                     expandable={true}
@@ -59,6 +61,7 @@ export default class Attributes extends React.Component {
                     value={this.props.value}
                     onChange={this.updateCharacter}
                 />
+
                 {this.renderModifier()}
             </div>
         );

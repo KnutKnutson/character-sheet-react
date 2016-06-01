@@ -170,57 +170,69 @@ export default class Character {
 
     constitution = () => {
         if (!this.character) { return null; }
-
+        return this.character.constitution;
     };
 
     intelligence = () => {
         if (!this.character) { return null; }
-
+        return this.character.intelligence;
     };
 
     wisdom = () => {
         if (!this.character) { return null; }
-
+        return this.character.wisdom;
     };
 
     charisma = () => {
         if (!this.character) { return null; }
+        return this.character.charisma;
+    };
 
+    abilityModifier = (abilityScore) => {
+        if (!abilityScore) { return null; }
+        let modifier = abilityScore - 10;
+        return Math.floor(modifier / 2);
     };
 
     strengthModifier = () => {
         if (!this.character) { return null; }
-
+        return this.abilityModifier(this.strength());
     } ;
 
     dexterityModifier = () => {
         if (!this.character) { return null; }
-
+        return this.abilityModifier(this.dexterity());
     } ;
 
     constitutionModifier = () => {
         if (!this.character) { return null; }
-
+        return this.abilityModifier(this.constitution());
     } ;
 
     intelligenceModifier = () => {
         if (!this.character) { return null; }
-
+        return this.abilityModifier(this.intelligence());
     } ;
 
     wisdomModifier = () => {
         if (!this.character) { return null; }
-
+        return this.abilityModifier(this.wisdom());
     } ;
 
     charismaModifier = () => {
         if (!this.character) { return null; }
+        return this.abilityModifier(this.charisma());
+    };
 
+
+    skillBonus = (modifier, trained) => {
+        modifier = parseInt(modifier);
+        return (trained ? (modifier + parseInt(this.proficiencyBonus())) : modifier);
     };
 
     strengthSavingThrow = () => {
         if (!this.character) { return null; }
-
+        return this.skillBonus(this.strengthModifier(), this.strengthSavingThrowTrained());
     };
 
     dexteritySavingThrow = () => {
@@ -338,7 +350,125 @@ export default class Character {
 
     };
 
+    strengthSavingThrowTrained = () => {
+        if (!this.character) { return null; }
+        return this.character.strengthSavingThrowTrained;
+    };
 
+    dexteritySavingThrowTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    constitutionSavingThrowTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    intelligenceSavingThrowTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    wisdomSavingThrowTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    charismaSavingThrowTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    acrobaticsTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    animalHandlingTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    arcanaTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    athleticsTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    deceptionTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    historyTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    insightTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    intimidationTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    investigationTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    medicineTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    natureTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    perceptionTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    performanceTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    persuasionTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    religionTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    sleightOfHandTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    stealthTrained = () => {
+        if (!this.character) { return null; }
+
+    };
+
+    survivalTrained = () => {
+        if (!this.character) { return null; }
+
+    };
 
     // COMBAT STATS --------------------------------------------
 

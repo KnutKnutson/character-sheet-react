@@ -21,13 +21,19 @@
     text-align: center;
 }
 
+.attribute {
+    display: inline-block;
+    width: 80px;
+    margin-right: .5em;
+}
+
 .hidden {
     display: none;
 }
 
 .center-wrap {
     margin: 0 auto;
-    max-width:960px;
+    max-width: 960px;
     text-align: center;
 }
 

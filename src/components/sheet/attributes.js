@@ -1,11 +1,15 @@
 import React from 'react';
 import Firebase from 'firebase';
 
+import Divider from 'material-ui/Divider';
+import {List, ListItem} from 'material-ui/List';
 import Paper from 'material-ui/Paper';
+import Subheader from 'material-ui/Subheader';
 
 import Attribute from './attribute';
 import AttributeTextField from './attribute_text_field';
 import SheetFragment from './sheet_fragment';
+import Skill from './skill';
 
 export default class Attributes extends React.Component {
     constructor(props) {
@@ -54,12 +58,12 @@ export default class Attributes extends React.Component {
                 <Paper
                     style={{
                         backgroundColor: '#CFD8DC',
-                        marginLeft: '-1em',
-                        marginRight: '1em',
-                        paddingLeft: '1em',
-                        paddingRight: '1em',
-                        width: '100px',
-                        float: 'left'
+                        marginLeft: '-.5em',
+                        marginRight: '-.5em',
+                        paddingLeft: '.5em',
+                        //paddingRight: '1em',
+                        //width: '100px',
+                        //float: 'left'
                     }}
                 >
                     <Attribute
@@ -74,30 +78,213 @@ export default class Attributes extends React.Component {
                         label='Dexterity'
                         value={this.props.character.dexterity()}
                     />
+                    <Attribute
+                        {...this.props}
+                        name='strength'
+                        label='Strength'
+                        value={this.props.character.strength()}
+                    />
+                    <Attribute
+                        {...this.props}
+                        name='dexterity'
+                        label='Dexterity'
+                        value={this.props.character.dexterity()}
+                    />
+                    <Attribute
+                        {...this.props}
+                        name='strength'
+                        label='Strength'
+                        value={this.props.character.strength()}
+                    />
+                    <Attribute
+                        {...this.props}
+                        name='dexterity'
+                        label='Dexterity'
+                        value={this.props.character.dexterity()}
+                    />
                 </Paper>
 
-                <AttributeTextField
-                    width="two-third"
+                <List
                     style={{
-                        float: 'left'
+                        //width: '160px',
+                        //float: 'left'
                     }}
-                    expandable={true}
-                    name="proficiencyBonus"
-                    floatingLabelText="Proficiency Bonus"
-                    value={this.props.character.proficiencyBonus()}
-                    onChange={this.updateCharacter}
-                />
-                <AttributeTextField
-                    width="two-third"
-                    style={{
-                        float: 'left'
-                    }}
-                    expandable={true}
-                    name="proficiencyBonus"
-                    floatingLabelText="Proficiency Bonus"
-                    value={this.props.character.proficiencyBonus()}
-                    onChange={this.updateCharacter}
-                />
+                    >
+                    <Subheader>Saving Throws</Subheader>
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                        />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+
+
+                    <Divider />
+                    <Subheader>Skills</Subheader>
+
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                    <Skill
+                        {...this.props}
+                        name="strengthSavingThrowTrained"
+                        label="Strength"
+                        trained={this.props.character.strengthSavingThrowTrained()}
+                        bonus={this.props.character.strengthSavingThrow()}
+                    />
+                </List>
             </SheetFragment>
         );
     }
