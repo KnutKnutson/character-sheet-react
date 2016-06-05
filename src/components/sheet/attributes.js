@@ -112,7 +112,7 @@ export default class Attributes extends React.Component {
                     >
                     <ListItem
                         primaryText="Saving Throws"
-                        initiallyOpen={true}
+                        initiallyOpen={false}
                         primaryTogglesNestedList={true}
                         nestedItems={this.savingThrows()}
                         />
@@ -121,7 +121,7 @@ export default class Attributes extends React.Component {
 
                     <ListItem
                         primaryText="Skills"
-                        initiallyOpen={true}
+                        initiallyOpen={false}
                         primaryTogglesNestedList={true}
                         nestedItems={this.skills()}
                     />
