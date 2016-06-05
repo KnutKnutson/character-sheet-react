@@ -155,7 +155,7 @@ export default class Character {
 
     passiveWisdom = () => {
         if (!this.character) { return null; }
-        return this.character.passiveWisdom;
+        return this.perception();
     };
 
     strength = () => {
@@ -226,6 +226,7 @@ export default class Character {
 
 
     skillBonus = (modifier, trained) => {
+        if (!modifier) { return 0; }
         modifier = parseInt(modifier);
         return (trained ? (modifier + parseInt(this.proficiencyBonus())) : modifier);
     };
@@ -237,117 +238,117 @@ export default class Character {
 
     dexteritySavingThrow = () => {
         if (!this.character) { return null; }
-
+        return this.skillBonus(this.dexterityModifier(), this.dexteritySavingThrowTrained());
     };
 
     constitutionSavingThrow = () => {
         if (!this.character) { return null; }
-
+        return this.skillBonus(this.constitutionModifier(), this.constitutionSavingThrowTrained());
     };
 
     intelligenceSavingThrow = () => {
         if (!this.character) { return null; }
-
+        return this.skillBonus(this.intelligenceModifier(), this.intelligenceSavingThrowTrained());
     };
 
     wisdomSavingThrow = () => {
         if (!this.character) { return null; }
-
+        return this.skillBonus(this.wisdomModifier(), this.wisdomSavingThrowTrained());
     };
 
     charismaSavingThrow = () => {
         if (!this.character) { return null; }
-
+        return this.skillBonus(this.charismaModifier(), this.charismaSavingThrowTrained());
     };
 
     acrobatics = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.dexterityModifier(), this.acrobaticsTrained());
     };
 
     animalHandling = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.wisdomModifier(), this.animalHandlingTrained());
     };
 
     arcana = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.intelligenceModifier(), this.arcanaTrained());
     };
 
     athletics = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.strengthModifier(), this.athleticsTrained());
     };
 
     deception = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.charismaModifier(), this.deceptionTrained());
     };
 
     history = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.intelligenceModifier(), this.historyTrained());
     };
 
     insight = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.wisdomModifier(), this.insightTrained());
     };
 
     intimidation = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.charismaModifier(), this.intimidationTrained());
     };
 
     investigation = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.intelligenceModifier(), this.investigationTrained());
     };
 
     medicine = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.wisdomModifier(), this.medicineTrained());
     };
 
     nature = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.intelligenceModifier(), this.natureTrained());
     };
 
     perception = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.wisdomModifier(), this.perceptionTrained());
     };
 
     performance = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.charismaModifier(), this.performanceTrained());
     };
 
     persuasion = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.charismaModifier(), this.persuasionTrained());
     };
 
     religion = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.intelligenceModifier(), this.religionTrained());
     };
 
     sleightOfHand = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.dexterityModifier(), this.sleightOfHandTrained());
     };
 
     stealth = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.dexterityModifier(), this.stealthTrained());
     };
 
     survival = () => {
-      if (!this.character) { return null; }
-
+        if (!this.character) { return null; }
+        return this.skillBonus(this.wisdomModifier(), this.survivalTrained());
     };
 
     strengthSavingThrowTrained = () => {
@@ -357,117 +358,117 @@ export default class Character {
 
     dexteritySavingThrowTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.dexteritySavingThrowTrained;
     };
 
     constitutionSavingThrowTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.constitutionSavingThrowTrained;
     };
 
     intelligenceSavingThrowTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.intelligenceSavingThrowTrained;
     };
 
     wisdomSavingThrowTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.wisdomSavingThrowTrained;
     };
 
     charismaSavingThrowTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.charismaSavingThrowTrained;
     };
 
     acrobaticsTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.acrobaticsTrained;
     };
 
     animalHandlingTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.animalHandlingTrained;
     };
 
     arcanaTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.arcanaTrained;
     };
 
     athleticsTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.athleticsTrained;
     };
 
     deceptionTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.deceptionTrained;
     };
 
     historyTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.historyTrained;
     };
 
     insightTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.insightTrained;
     };
 
     intimidationTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.intimidationTrained;
     };
 
     investigationTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.investigationTrained;
     };
 
     medicineTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.medicineTrained;
     };
 
     natureTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.natureTrained;
     };
 
     perceptionTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.perceptionTrained;
     };
 
     performanceTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.performanceTrained;
     };
 
     persuasionTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.persuasionTrained;
     };
 
     religionTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.religionTrained;
     };
 
     sleightOfHandTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.sleightOfHandTrained;
     };
 
     stealthTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.stealthTrained;
     };
 
     survivalTrained = () => {
         if (!this.character) { return null; }
-
+        return this.character.survivalTrained;
     };
 
     // COMBAT STATS --------------------------------------------
