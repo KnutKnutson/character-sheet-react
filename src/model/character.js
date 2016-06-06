@@ -60,6 +60,11 @@ export default class Character {
 
     };
 
+    getFieldByName = (fieldName) => {
+        if (!this.character) { return null; }
+        return this.character[fieldName];
+    };
+
 
     // PROFILE --------------------------------------------
 
@@ -471,7 +476,12 @@ export default class Character {
         return this.character.survivalTrained;
     };
 
+
     // COMBAT STATS --------------------------------------------
+
+    armorClass = () => {
+        return this.getFieldByName('strength');
+    };
 
     // SPELLS --------------------------------------------
 

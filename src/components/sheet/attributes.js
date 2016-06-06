@@ -134,6 +134,7 @@ export default class Attributes extends React.Component {
         return [
             <Skill
                 {...this.props}
+                key={'strength'}
                 name="strengthSavingThrowTrained"
                 label="Strength"
                 trained={this.props.character.strengthSavingThrowTrained()}
@@ -141,6 +142,7 @@ export default class Attributes extends React.Component {
             />,
             <Skill
                 {...this.props}
+                key={'Dexterity'}
                 name="dexteritySavingThrowTrained"
                 label="Dexterity"
                 trained={this.props.character.dexteritySavingThrowTrained()}

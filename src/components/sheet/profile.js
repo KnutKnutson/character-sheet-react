@@ -1,6 +1,7 @@
 import React from 'react';
 import Firebase from 'firebase';
 
+import TextField from 'material-ui/TextField';
 import AttributeTextField from './attribute_text_field';
 import SheetFragment from './sheet_fragment';
 
