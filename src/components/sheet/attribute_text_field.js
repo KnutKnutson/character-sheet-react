@@ -12,6 +12,8 @@ export default class AttributeTextField extends React.Component {
 
     getWidth = () => {
         switch (this.props.width) {
+            case 'full-width':
+                return '100%';
             case 'one-fifth':
                 return '48px';
             case 'one-third':
@@ -23,7 +25,7 @@ export default class AttributeTextField extends React.Component {
             case 'two-third':
                 return '168px';
             default:
-                return '256px'; // full width
+                return '256px';
         }
     };
 
@@ -34,7 +36,7 @@ export default class AttributeTextField extends React.Component {
                 name={this.props.name}
                 style={$.extend({
                     width: this.getWidth(),
-                    marginRight: '8px'
+                    marginRight: '.5em'
                 }, this.props.style)}
                 floatingLabelText={this.props.floatingLabelText}
                 value={this.props.value}
