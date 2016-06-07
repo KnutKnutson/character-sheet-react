@@ -28,6 +28,7 @@ export default class Character {
     // DML
     newCharacter = () => {
         return null;
+        // TODO init character, attacks, spells, other lists?
     };
 
     deleteCharacter = () => {
