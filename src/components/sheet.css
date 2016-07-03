@@ -1,6 +1,40 @@
+
+.sheet-masonry-wrap {
+    margin: 0 auto;
+}
+
 .sheet-paper {
-    min-height: 100px;
-    padding: .5em;
-    width: 100%;
-    display: inline-block
+}
+
+.sheet-fragment {
+     margin: .5em;
+     padding-left: 1em;
+     padding-right: 1em;
+     padding-bottom: .5em;
+     width: 300px;
+     text-align: start;
+ }
+
+@media only screen and (min-width: 400px) {
+    .sheet-masonry-wrap {
+        width: 320px;
+    }
+}
+
+@media only screen and (min-width: 660px) {
+    .sheet-masonry-wrap {
+        width: 640px;
+    }
+}
+
+@media only screen and (min-width: 980px) {
+    .sheet-masonry-wrap {
+        width: 960px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .sheet-masonry-wrap {
+        width: 1270px;
+    }
 }

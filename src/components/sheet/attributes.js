@@ -111,6 +111,7 @@ export default class Attributes extends React.Component {
                     }}
                     >
                     <ListItem
+                        {...this.props}
                         primaryText="Saving Throws"
                         initiallyOpen={false}
                         primaryTogglesNestedList={true}
@@ -120,6 +121,7 @@ export default class Attributes extends React.Component {
                     <Divider />
 
                     <ListItem
+                        {...this.props}
                         primaryText="Skills"
                         initiallyOpen={false}
                         primaryTogglesNestedList={true}

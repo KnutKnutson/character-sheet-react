@@ -1,5 +1,6 @@
 import React from 'react';
 import Firebase from 'firebase';
+import Masonry from 'react-masonry-component';
 
 import Paper from 'material-ui/Paper';
 
@@ -11,7 +12,10 @@ import Profile from './sheet/profile';
 export default class Sheet extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {character: new Character(this.props.characterId)};
+        this.state = {
+            character: new Character(this.props.characterId),
+            resizeMasonry: false
+        };
     }
 
     componentWillReceiveProps() {
@@ -30,6 +34,10 @@ export default class Sheet extends React.Component {
         this.state.character.unBindFireBaseCharacter();
     }
 
+    resizeMasonry = () => {
+        this.setState({resizeMasonry: !this.state.resizeMasonry});
+    };
+
     updateCharacterValueCallback = (path, value) => {
         this.state.character.updateCharacter(path, value);
     };
@@ -38,32 +46,38 @@ export default class Sheet extends React.Component {
         return (
             <Paper
                 className="sheet-paper"
-                zDepth={1}>
-                <div className="center-wrap">
-                    <Profile
-                        character={this.state.character}
-                        onCharacterValueUpdate={this.updateCharacterValueCallback}
-                    />
-                    <Attributes
-                        character={this.state.character}
-                        onCharacterValueUpdate={this.updateCharacterValueCallback}
-                    />
-                    <CombatStats
-                        character={this.state.character}
-                        onCharacterValueUpdate={this.updateCharacterValueCallback}
-                    />
-                    <Profile
-                        character={this.state.character}
-                        onCharacterValueUpdate={this.updateCharacterValueCallback}
-                    />
-                    <Profile
-                        character={this.state.character}
-                        onCharacterValueUpdate={this.updateCharacterValueCallback}
-                    />
-                    <Profile
-                        character={this.state.character}
-                        onCharacterValueUpdate={this.updateCharacterValueCallback}
-                    />
+                zDepth={1}
+                style={{background: 'inherit'}}>
+                <div className="sheet-masonry-wrap">
+                    <Masonry
+                        className="masonry"
+                        resizeLayout={this.state.resizeMasonry} >
+                        <Profile
+                            character={this.state.character}
+                            onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        />
+                        <Attributes
+                            character={this.state.character}
+                            onCharacterValueUpdate={this.updateCharacterValueCallback}
+                            onNestedListToggle={this.resizeMasonry}
+                        />
+                        <CombatStats
+                            character={this.state.character}
+                            onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        />
+                        <Profile
+                            character={this.state.character}
+                            onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        />
+                        <Profile
+                            character={this.state.character}
+                            onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        />
+                        <Profile
+                            character={this.state.character}
+                            onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        />
+                    </Masonry>
                 </div>
             </Paper>
         );
