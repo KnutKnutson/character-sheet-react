@@ -29,8 +29,8 @@ export default class Attributes extends React.Component {
     render() {
         return (
             <SheetFragment
-                title="Profile"
-                initiallyExpanded={false}
+                {...this.props}
+                title="Attributes"
             >
                 <AttributeTextField
                     width="one-third"
@@ -65,6 +65,7 @@ export default class Attributes extends React.Component {
                         //width: '100px',
                         //float: 'left'
                     }}
+                    expandable={true}
                 >
                     <Attribute
                         {...this.props}
@@ -109,6 +110,7 @@ export default class Attributes extends React.Component {
                         //width: '160px',
                         //float: 'left'
                     }}
+                    expandable={true}
                     >
                     <ListItem
                         {...this.props}

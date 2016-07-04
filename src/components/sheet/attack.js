@@ -18,7 +18,7 @@ export default class Attack extends React.Component {
 
     render() {
         return (
-            <span>
+            <div>
                 <Paper
                     circle={false}
                     style={{
@@ -43,14 +43,14 @@ export default class Attack extends React.Component {
                 <Paper
                     circle={false}
                     style={{
-                        display: 'inline-block',
-                        backgroundColor: '#CFD8DC',
-                        marginLeft: '.5em',
-                        marginTop: '.5em',
-                        paddingRight: '.5em',
-                        paddingLeft: '.5em',
-                        width: '60px',
-                    }}
+                    display: 'inline-block',
+                    backgroundColor: '#CFD8DC',
+                    marginLeft: '.5em',
+                    marginTop: '.5em',
+                    paddingRight: '.5em',
+                    paddingLeft: '.5em',
+                    width: '60px',
+                }}
                 >
                     <AttributeTextField
                         width="full-width"
@@ -64,15 +64,15 @@ export default class Attack extends React.Component {
                 <Paper
                     circle={false}
                     style={{
-                        display: 'inline-block',
-                        backgroundColor: '#CFD8DC',
-                        marginLeft: '.5em',
-                        marginTop: '.5em',
-                        marginRight: '-.5em',
-                        paddingRight: '.5em',
-                        paddingLeft: '.5em',
-                        width: '104px',
-                    }}
+                    display: 'inline-block',
+                    backgroundColor: '#CFD8DC',
+                    marginLeft: '.5em',
+                    marginTop: '.5em',
+                    marginRight: '-.5em',
+                    paddingRight: '.5em',
+                    paddingLeft: '.5em',
+                    width: '104px',
+                }}
                 >
                     <AttributeTextField
                         width="full-width"
@@ -83,7 +83,7 @@ export default class Attack extends React.Component {
                         onChange={this.updateCharacter}
                     />
                 </Paper>
-            </span>
+            </div>
         );
     }
 }

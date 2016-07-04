@@ -34,7 +34,7 @@ export default class NavDrawer extends React.Component {
 
                 <LeftNav
                     className="navigation-drawer"
-                    docked={true}
+                    docked={false}
                     width={250}
                     open={this.state.open}
                     onRequestChange={open => this.setState({open})} >

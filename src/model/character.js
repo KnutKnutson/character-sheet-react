@@ -484,12 +484,70 @@ export default class Character {
         return this.getFieldByName('strength');
     };
 
+    initiative = () => {};
+    speed = () => {};
+    hpMax = () => {};
+    currentHP = () => {};
+    tempHP = () => {};
+    deathSaveSuccesses = () => {};
+    deathSaveFailures = () => {};
+
+    hitDice = () => {
+        return this.getFieldByName('strength');
+    };
+
+    hitDiceTotal = () => {
+        return this.getFieldByName('strength');
+    };
+
+    attacks = () => {
+
+    };
+
+    newAttack = () => {
+
+    };
+
+    attacksAndSpellcasting = () => {};
+
+
     // SPELLS --------------------------------------------
+
+    spellCastingAbility = () => {};
+    spellSaveDC = () => {};
+    spellAttackBonus = () => {};
+
+    spells = () => {
+
+    };
+
 
     // FEATURES --------------------------------------------
 
+    features = () => {};
+    proficienciesAndLanguages = () => {};
+    personality = () => {};
+    ideals = () => {};
+    bonds = () => {};
+    flaws = () => {};
+
+
     // EQUIPMENT --------------------------------------------
 
+    copper = () => {};
+    silver = () => {};
+    electrum = () => {};
+    gold = () => {};
+    platinum = () => {};
+    equipment = () => {};
+    newEquipment = () => {};
+    treasure = () => {};
+    newTreasure = () => {};
+
+
     // ALLIES --------------------------------------------
+
+    allies = () => {};
+    organizations = () => {};
 
 }

@@ -24,7 +24,8 @@ export default class CombatStats extends React.Component {
     renderAttacks = () => {
         // TODO.  iterate over this.props.character.attacks and use attack.js.  remove this.
         return (
-            <div>
+            <div
+                expandable={true}>
                 <Paper
                     circle={false}
                     style={{
@@ -96,10 +97,11 @@ export default class CombatStats extends React.Component {
     render() {
         return (
             <SheetFragment
-                title="Profile"
-                initiallyExpanded={false}
+                {...this.props}
+                title="Combat Workspace"
             >
                 <Paper
+                    expandable={true}
                     circle={false}
                     style={{
                         display: 'inline-block',
@@ -121,6 +123,7 @@ export default class CombatStats extends React.Component {
                     />
                 </Paper>
                 <Paper
+                    expandable={true}
                     circle={false}
                     style={{
                         display: 'inline-block',
@@ -142,6 +145,7 @@ export default class CombatStats extends React.Component {
                     />
                 </Paper>
                 <Paper
+                    expandable={true}
                     circle={false}
                     style={{
                         display: 'inline-block',
@@ -187,8 +191,12 @@ export default class CombatStats extends React.Component {
                     value={this.props.character.armorClass()}
                     onChange={this.updateCharacter}
                 />
-                <Subheader>Death Saves</Subheader>
+                <Subheader
+                    expandable={true}>
+                    Death Saves
+                </Subheader>
                 <Checkbox
+                    expandable={true}
                     checked={true}
                     style={{
                         width: '40px',
@@ -196,6 +204,7 @@ export default class CombatStats extends React.Component {
                     }}
                 />
                 <Checkbox
+                    expandable={true}
                     checked={false}
                     style={{
                         width: '40px',
@@ -203,6 +212,7 @@ export default class CombatStats extends React.Component {
                     }}
                 />
                 <Checkbox
+                    expandable={true}
                     checked={false}
                     label="Successes"
                     style={{
@@ -210,8 +220,10 @@ export default class CombatStats extends React.Component {
                         display: 'inline-block'
                     }}
                 />
-                <Divider/>
+                <Divider
+                    expandable={true}/>
                 <Checkbox
+                    expandable={true}
                     checked={true}
                     style={{
                         width: '40px',
@@ -219,6 +231,7 @@ export default class CombatStats extends React.Component {
                     }}
                 />
                 <Checkbox
+                    expandable={true}
                     checked={false}
                     style={{
                         width: '40px',
@@ -226,6 +239,7 @@ export default class CombatStats extends React.Component {
                     }}
                 />
                 <Checkbox
+                    expandable={true}
                     checked={false}
                     label="Failures"
                     style={{
@@ -233,8 +247,28 @@ export default class CombatStats extends React.Component {
                         display: 'inline-block'
                     }}
                 />
-                <Subheader>Hit Dice</Subheader>
-                <Subheader>Attacks and Spellcasting</Subheader>
+                <Divider
+                    expandable={true}/>
+                <AttributeTextField
+                    width="one-half"
+                    expandable={true}
+                    name="hitDice"
+                    floatingLabelText="Hit Dice"
+                    value={this.props.character.hitDice()}
+                    onChange={this.updateCharacter}
+                />
+                <AttributeTextField
+                    width="one-half"
+                    expandable={true}
+                    name="hitDiceTotal"
+                    floatingLabelText="Total"
+                    value={this.props.character.hitDiceTotal()}
+                    onChange={this.updateCharacter}
+                />
+                <Subheader
+                    expandable={true}>
+                    Attacks and Spellcasting
+                </Subheader>
                 {
                     [
                         this.renderAttacks()

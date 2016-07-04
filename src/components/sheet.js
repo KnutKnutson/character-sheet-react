@@ -44,42 +44,43 @@ export default class Sheet extends React.Component {
 
     render() {
         return (
-            <Paper
-                className="sheet-paper"
-                zDepth={1}
-                style={{background: 'inherit'}}>
-                <div className="sheet-masonry-wrap">
-                    <Masonry
-                        className="masonry"
-                        resizeLayout={this.state.resizeMasonry} >
-                        <Profile
-                            character={this.state.character}
-                            onCharacterValueUpdate={this.updateCharacterValueCallback}
-                        />
-                        <Attributes
-                            character={this.state.character}
-                            onCharacterValueUpdate={this.updateCharacterValueCallback}
-                            onNestedListToggle={this.resizeMasonry}
-                        />
-                        <CombatStats
-                            character={this.state.character}
-                            onCharacterValueUpdate={this.updateCharacterValueCallback}
-                        />
-                        <Profile
-                            character={this.state.character}
-                            onCharacterValueUpdate={this.updateCharacterValueCallback}
-                        />
-                        <Profile
-                            character={this.state.character}
-                            onCharacterValueUpdate={this.updateCharacterValueCallback}
-                        />
-                        <Profile
-                            character={this.state.character}
-                            onCharacterValueUpdate={this.updateCharacterValueCallback}
-                        />
-                    </Masonry>
-                </div>
-            </Paper>
+            <div className="sheet-masonry-wrap">
+                <Masonry
+                    className="masonry"
+                    resizeLayout={this.state.resizeMasonry} >
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        onExpandChange={this.resizeMasonry}
+                    />
+                    <Attributes
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        onExpandChange={this.resizeMasonry}
+                        onNestedListToggle={this.resizeMasonry}
+                    />
+                    <CombatStats
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        onExpandChange={this.resizeMasonry}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        onExpandChange={this.resizeMasonry}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        onExpandChange={this.resizeMasonry}
+                    />
+                    <Profile
+                        character={this.state.character}
+                        onCharacterValueUpdate={this.updateCharacterValueCallback}
+                        onExpandChange={this.resizeMasonry}
+                    />
+                </Masonry>
+            </div>
         );
     }
 }
