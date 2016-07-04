@@ -132,11 +132,12 @@ export default class Profile extends React.Component {
                     value={this.props.character.hair()}
                     onChange={this.updateCharacter}
                 />
+
                 <AttributeTextField
                     expandable={true}
                     name="backstory"
                     floatingLabelText="Backstory"
-                    multiline={true}
+                    multiLine={true}
                     rows={2}
                     value={this.props.character.backstory()}
                     onChange={this.updateCharacter}
