@@ -1,4 +1,5 @@
 import csFirebase from './firebase';
+import auth from './auth';
 
 export default class Character {
     constructor(characterId) {
@@ -27,7 +28,18 @@ export default class Character {
 
     // DML
     newCharacter = () => {
-        return null;
+        let newCharKey = this.firebase.ref('/userCharacters/' + auth.user.uid).push().key;
+        let newCharRef = this.firebase.ref('/characters/' + newCharKey);
+
+        for (let i = 1; i <= 3; i++) {
+            newCharacter.child('attacks').push()
+        }
+        for (let i = 1; i <= 9; i++) {
+            newCharacter.child('spells').push({
+                level: i
+            })
+        }
+        return newCharacter;
         // TODO init character, attacks, spells, other lists?
     };
 
@@ -46,6 +58,7 @@ export default class Character {
     };
 
     shareCharacter = (characterId, emailsToShareWith) => {
+        let sharedCharactersRef = this.firebase.ref('/sharedCharacters/');
         for (var email of emailsToShareWith) {
             this.characterFBRef.child(email).push(characterId);
         }

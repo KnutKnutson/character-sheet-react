@@ -17,7 +17,7 @@ class Auth {
             //console.log(user);
             component.setState({
                 loggedIn: user !== null,
-                user: {}
+                user: parent.user
             });
         });
     };
@@ -68,6 +68,9 @@ class Auth {
     };
 
     saveUser = (uid, email) => {
+        csFirebase.app().database().ref('/users/' + uid).set({
+            email: email
+        });
         //this.firebase.child('users').child(uid).set({
         //    email: email
         //});

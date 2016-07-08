@@ -3,34 +3,38 @@ import React from 'react';
 import Header from './navigation.js';
 import Sheet from './sheet';
 
+import UserCharacters from '../model/user_characters';
+
 class Body extends React.Component {
     constructor(props) {
         super(props);
     }
 
     componentWillMount() {
-        const mql = window.matchMedia(`(min-width: 800px)`);
-        mql.addListener(this.mediaQueryChanged);
-        this.setState({mql: mql, docked: mql.matches});
     }
     componentWillUnmount() {
-        this.state.mql.removeListener(this.mediaQueryChanged);
+    }
+
+    componentWillReceiveProps() {
+        if (this.props.user.uid !== nextProps.user.uid) {
+            let nextUserCharacters = new UserCharacters(nextProps.user.uid);
+            this.state.character.unBindFireBaseCharacter();
+            nextUserCharacters.bindFireBaseCharacter(this);
+        }
     }
 
     onSetOpen(open) {
-        this.setState({open: open});
     }
 
     mediaQueryChanged() {
-        this.setState({docked: this.state.mql.matches});
     }
 
     render() {
         return (
             <div>
-                <Header loggedIn={this.props.loggedIn} {...this.props} />
+                <Header {...this.props} />
                 {
-                    this.props.loggedIn ? <Sheet characterId={1} {...this.props} /> : null
+                    this.props.loggedIn ? <Sheet {...this.props} characterId={1} /> : null
                 }
             </div>
         );
