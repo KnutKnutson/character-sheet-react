@@ -11,10 +11,11 @@ class Auth {
         this.auth.onAuthStateChanged(function(user) {
             if (user) {
                 parent.user = user;
+                // TODO: only save user if new.
+                parent.saveUser(user.uid, user.email);
             } else {
                 parent.user = {};
             }
-            //console.log(user);
             component.setState({
                 loggedIn: user !== null,
                 user: parent.user
@@ -55,10 +56,12 @@ class Auth {
 
     createUser = (email, password, callback) => {
         //console.log('email: ', email, 'password: ', password);
+        let parent = this;
         this.auth.createUserWithEmailAndPassword(
             email, //"bobtony@firebase.com",
             password //"correcthorsebatterystaple"
         ).then(function() {
+            // on successful signup the user is logged in automatically. The auth will update with the new user.
             callback(null, true);
         }).catch(function(error) {
             var errorCode = error.code;
@@ -71,9 +74,6 @@ class Auth {
         csFirebase.app().database().ref('/users/' + uid).set({
             email: email
         });
-        //this.firebase.child('users').child(uid).set({
-        //    email: email
-        //});
     };
 
     deleteUser = (email, password) => {

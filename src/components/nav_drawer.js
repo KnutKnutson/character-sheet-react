@@ -2,6 +2,7 @@ import React from 'react';
 
 import AppBar from 'material-ui/AppBar';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import Divider from 'material-ui/Divider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
 import LeftNav from 'material-ui/Drawer';
@@ -72,8 +73,12 @@ export default class NavDrawer extends React.Component {
                             <ContentAdd />
                         </FloatingActionButton>
                         <Subheader>My Characters</Subheader>
-                        <ListItem onTouchTap="" primaryText="Sent mail"  />
-                        <ListItem onTouchTap="" primaryText="Drafts"  />
+                        <div>
+                            <ListItem onTouchTap="" primaryText="Sent mail"  />
+                            <ListItem onTouchTap="" primaryText="Drafts"  />
+                        </div>
+
+                        <Divider />
 
                         <FloatingActionButton
                             disabled={!this.props.loggedIn}

@@ -1,6 +1,6 @@
 # character-sheet-react
 
-A character sheet app built in JavaScript with React and Firebase.
+A character sheet app built with React and Firebase.
 
 ## Usage
 

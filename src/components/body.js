@@ -15,12 +15,12 @@ class Body extends React.Component {
     componentWillUnmount() {
     }
 
-    componentWillReceiveProps() {
-        if (this.props.user.uid !== nextProps.user.uid) {
-            let nextUserCharacters = new UserCharacters(nextProps.user.uid);
-            this.state.character.unBindFireBaseCharacter();
-            nextUserCharacters.bindFireBaseCharacter(this);
-        }
+    componentWillReceiveProps(nextProps) {
+        //if (this.props.user.uid !== nextProps.user.uid) {
+        //    let nextUserCharacters = new UserCharacters(nextProps.user.uid);
+        //    this.state.character.unBindFireBaseCharacter();
+        //    nextUserCharacters.bindFireBaseCharacter(this);
+        //}
     }
 
     onSetOpen(open) {

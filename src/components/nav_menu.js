@@ -54,6 +54,16 @@ export default class NavMenu extends React.Component {
         auth.logout();
     };
 
+    renderCharacterOptions = () => {
+        return (
+            <div>
+                <Divider />
+                <MenuItem primaryText="Share" leftIcon={<Share />} />
+                <MenuItem primaryText="Delete" leftIcon={<Delete />} />
+            </div>
+        );
+    };
+
     render() {
         return (
             <div>
@@ -67,9 +77,7 @@ export default class NavMenu extends React.Component {
                         ? <MenuItem primaryText="Logout" leftIcon={<ExitToApp />} onTouchTap={this.logout} />
                         : <MenuItem primaryText="Login" leftIcon={<Person />} onTouchTap={this.openLoginDialog} />}
                     <MenuItem primaryText="Signup" leftIcon={<PersonAdd />} onTouchTap={this.openSignupDialog} />
-                    <Divider />
-                    <MenuItem primaryText="Share" leftIcon={<Share />} />
-                    <MenuItem primaryText="Delete" leftIcon={<Delete />} />
+                    {(this.props.loggedIn) ? this.renderCharacterOptions() : null}
                 </IconMenu>
 
                 <LoginDialog open={this.state.loginOpen} signUp={this.openSignupDialog} buttonCallback={this.closeLoginDialog} />

@@ -8,6 +8,8 @@ import Body from './components/body';
 import customTheme from './theme';
 import auth from './model/auth';
 
+import './app.css';
+
 // Needed for onTouchTap
 // Can go away when react 1.0 release
 // Check this repo:
@@ -29,10 +31,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <MuiThemeProvider muiTheme={customTheme}>
+            <MuiThemeProvider {...this.props} muiTheme={customTheme}>
                 <Body
-                    loggedIn={this.state.loggedIn}
                     {...this.props}
+                    loggedIn={this.state.loggedIn}
+                    user={this.state.user}
                 />
             </MuiThemeProvider>
         );

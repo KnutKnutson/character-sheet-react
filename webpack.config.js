@@ -25,11 +25,12 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.css$/,
+                test: /\.(scss|css)$/,
                 include: [
                     path.join(__dirname, 'src')
                 ],
-                loader: 'style!css'
+                exclude: /node_modules/,
+                loaders: ['style', 'css', 'sass']
             },
             {
                 test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,

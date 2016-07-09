@@ -2,11 +2,11 @@
   "name": "character-sheet-react",
   "version": "0.1.0",
   "description": "A character sheet web app.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "build-css": "./node_modules/postcss-cli/bin/postcss -m --use precss -o build/app.css src/app.css",
-    "build": "./node_modules/webpack/bin/webpack.js && cp src/index.html build/index.html && npm run build-css",
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base build/"
+    "build": "webpack && cp src/index.html build/index.html",
+    "start": "webpack-dev-server --content-base build/",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

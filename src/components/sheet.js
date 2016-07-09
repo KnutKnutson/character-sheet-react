@@ -18,7 +18,7 @@ export default class Sheet extends React.Component {
         };
     }
 
-    componentWillReceiveProps() {
+    componentWillReceiveProps(nextProps) {
         if (this.props.characterId !== nextProps.characterId) {
             let nextCharacter = new Character(nextProps.characterId);
             this.state.character.unBindFireBaseCharacter();
