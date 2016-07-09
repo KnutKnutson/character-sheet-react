@@ -4,6 +4,7 @@ import Header from './navigation.js';
 import Sheet from './sheet';
 
 import UserCharacters from '../model/user_characters';
+import Character from '../model/character';
 
 class Body extends React.Component {
     constructor(props) {
@@ -14,13 +15,16 @@ class Body extends React.Component {
             userId = user.uid;
         }
         this.state = {
-            userCharacters: new UserCharacters(userId)
+            userCharacters: new UserCharacters(userId),
+            characterId: null
         };
     }
 
     componentWillMount() {
+        this.state.userCharacters.bindUserCharacters(this);
     }
     componentWillUnmount() {
+        this.state.userCharacters.unBindUserCharacters();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -33,18 +37,38 @@ class Body extends React.Component {
         }
     }
 
-    onSetOpen(open) {
-    }
+    newCharacter = () => {
+        let newCharacterId = Character.newCharacter();
+        this.setState({
+           characterId: newCharacterId
+        });
+    };
 
-    mediaQueryChanged() {
-    }
+    changeCharacter = (newCharacterId) => {
+        console.log('changing character' + newCharacterId);
+        this.setState({characterId: newCharacterId});
+        this.state.userCharacters.updateUserCharacter(newCharacterId);
+    };
+
+    deleteCharacter = () => {
+
+    };
 
     render() {
         return (
             <div>
-                <Header {...this.props} userCharacters={this.state.userCharacters} />
+                <Header
+                    {...this.props}
+                    newCharacterCallback={this.newCharacter}
+                    changeCharacterCallback={this.changeCharacter}
+                    deleteCharacterCallback={this.deleteCharacter}
+                    userCharacters={this.state.userCharacters}
+                    characterId={this.state.characterId} />
                 {
-                    this.props.loggedIn ? <Sheet {...this.props} characterId={1} /> : null
+                    (this.props.loggedIn && this.state.characterId) ?
+                        <Sheet
+                            {...this.props}
+                            characterId={this.state.characterId} /> : null
                 }
             </div>
         );

@@ -10,10 +10,12 @@ export default class CharacterListItem extends React.Component {
     }
 
     render() {
+        let character = this.props.character;
         return (
             <ListItem
-                onTouchTap=""
-                primaryText="Drafts"
+                onTouchTap={this.props.changeCharacterCallback}
+                primaryText={character.characterName}
+                secondaryText={['lvl:', character.level, character.characterClass, character.characterRace].join(' ')}
             />
         );
     }

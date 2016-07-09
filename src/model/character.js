@@ -1,5 +1,6 @@
 import csFirebase from './firebase';
 import auth from './auth';
+import UserCharacters from './user_characters';
 
 export default class Character {
     constructor(characterId) {
@@ -14,6 +15,7 @@ export default class Character {
 
     // Bind firebase character to react component
     bindFireBaseCharacter = (component) => {
+        if (!this.characterFBRef) { return null; }
         var parent = this;
         this.characterFBRef.on('value', function(snapshot) {
             parent.character = snapshot.val();
@@ -22,26 +24,34 @@ export default class Character {
     };
 
     unBindFireBaseCharacter = () => {
+        if (!this.characterFBRef) { return null; }
         this.characterFBRef.off();
     };
 
 
-    // DML
-    newCharacter = () => {
+    //
+    static newCharacter = () => {
         console.log('new character');
-        let newCharKey = this.firebase.ref('/userCharacters/' + auth.user.uid).push().key;
-        this.firebase.ref('/userCharacters/' + auth.user.uid + '/' + newCharKey).update({updatedAt: new Date()});
-        let newCharRef = this.firebase.ref('/characters/' + newCharKey);
+        let fb = csFirebase.app().database();
+        let userCharacters = new UserCharacters(auth.user.uid);
+        let newCharKey = userCharacters.newUserCharacter();
+        let newCharRef = fb.ref('/characters/' + newCharKey);
+        newCharRef.set({name: "New Character"});
 
         for (let i = 1; i <= 3; i++) {
-            newCharRef.child('attacks').push()
+            newCharRef.child('attacks/' + i).push({
+                name: "",
+                bonus: "",
+                damage: ""
+            });
         }
         for (let i = 1; i <= 9; i++) {
-            newCharRef.child('spells').push({
-                level: i
-            })
+            newCharRef.child('spells/' + i).push({
+                name: "",
+                prepared: false
+            });
         }
-        return newCharRef;
+        return newCharKey;
         // TODO init character, attacks, spells, other lists?
     };
 
@@ -53,17 +63,6 @@ export default class Character {
         let updateHash = {};
         updateHash[path] = value;
         this.characterFBRef.update(updateHash);
-    };
-
-    pushCharacter = (path, value, callback) => {
-
-    };
-
-    shareCharacter = (characterId, emailsToShareWith) => {
-        let sharedCharactersRef = this.firebase.ref('/sharedCharacters/');
-        for (var email of emailsToShareWith) {
-            this.characterFBRef.child(email).push(characterId);
-        }
     };
 
 

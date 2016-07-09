@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import ContentAddCircle from 'material-ui/svg-icons/content/add-circle';
 import Delete from 'material-ui/svg-icons/action/delete';
 import ExitToApp from 'material-ui/svg-icons/action/exit-to-app';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -24,8 +24,7 @@ export default class NavMenu extends React.Component {
         super(props);
         this.state = {
             loginOpen: false,
-            signupOpen: false,
-            loggedIn: this.props.loggedIn
+            signupOpen: false
         };
     }
 
@@ -59,9 +58,13 @@ export default class NavMenu extends React.Component {
         return (
             <div>
                 <Divider />
-                <MenuItem primaryText="Share" leftIcon={<Share />} />
-                <MenuItem primaryText="Delete" leftIcon={<Delete />} />
-                <MenuItem primaryText="New" leftIcon={<ContentAdd />} />
+                <MenuItem key="new" primaryText="New" leftIcon={<ContentAddCircle />} onTouchTap={this.props.newCharacterCallback} />
+                {(this.props.characterId) ?
+                    [
+                        <MenuItem key="share" primaryText="Share" leftIcon={<Share />} />,
+                        <MenuItem key="delete" primaryText="Delete" leftIcon={<Delete />} />
+                    ] : null
+                }
             </div>
         );
     };
@@ -76,9 +79,9 @@ export default class NavMenu extends React.Component {
                     targetOrigin={{horizontal: 'right', vertical: 'top'}}
                     anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
                     {(this.props.loggedIn)
-                        ? <MenuItem primaryText="Logout" leftIcon={<ExitToApp />} onTouchTap={this.logout} />
-                        : <MenuItem primaryText="Login" leftIcon={<Person />} onTouchTap={this.openLoginDialog} />}
-                    <MenuItem primaryText="Signup" leftIcon={<PersonAdd />} onTouchTap={this.openSignupDialog} />
+                        ? <MenuItem key="logout" primaryText="Logout" leftIcon={<ExitToApp />} onTouchTap={this.logout} />
+                        : <MenuItem key="login" primaryText="Login" leftIcon={<Person />} onTouchTap={this.openLoginDialog} />}
+                    <MenuItem key="signup" primaryText="Signup" leftIcon={<PersonAdd />} onTouchTap={this.openSignupDialog} />
                     {(this.props.loggedIn) ? this.renderCharacterOptions() : null}
                 </IconMenu>
 

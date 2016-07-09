@@ -8,6 +8,8 @@ import {List, ListItem} from 'material-ui/List';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import Subheader from 'material-ui/Subheader';
 
+import CharacterListItem from './character_list_item';
+
 export default class NavDrawer extends React.Component {
 
     constructor(props) {
@@ -19,7 +21,21 @@ export default class NavDrawer extends React.Component {
 
     handleClose = () => this.setState({open: false});
 
+    userCharacters = () => {
+        if (this.props.userCharacters && this.props.userCharacters.userCharactersData) {
+            return this.props.userCharacters.userCharactersData;
+        } else {
+            return [];
+        }
+    };
+
+    sharedCharacters = () => {
+        return [];
+    };
+
     render() {
+        let userCharacters = this.userCharacters();
+        let sharedCharacters = this.sharedCharacters();
         return (
             <div>
                 <IconButton
@@ -51,14 +67,22 @@ export default class NavDrawer extends React.Component {
 
                     <List>
                         <Subheader>My Characters</Subheader>
-                        <div>
-                            <ListItem onTouchTap="" primaryText="Sent mail"  />
-                            <ListItem onTouchTap="" primaryText="Drafts"  />
-                        </div>
+                        {[].map( function(character) {
+                            return( <CharacterListItem
+                                {...this.props}
+                                key={character.uid}
+                                character={character} />);
+                        })}
 
                         <Divider />
 
                         <Subheader>Allies</Subheader>
+                        {[].map(function(character) {
+                            return( <CharacterListItem
+                                {...this.props}
+                                key={character.uid}
+                                character={character} />);
+                        })}
                     </List>
                 </LeftNav>
             </div>
