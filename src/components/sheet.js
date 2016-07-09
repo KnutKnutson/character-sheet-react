@@ -64,12 +64,13 @@ export default class Sheet extends React.Component {
                         onCharacterValueUpdate={this.updateCharacterValueCallback}
                         onExpandChange={this.resizeMasonry}
                     />
-                    <Profile
+                    <Attributes
                         character={this.state.character}
                         onCharacterValueUpdate={this.updateCharacterValueCallback}
                         onExpandChange={this.resizeMasonry}
+                        onNestedListToggle={this.resizeMasonry}
                     />
-                    <Profile
+                    <CombatStats
                         character={this.state.character}
                         onCharacterValueUpdate={this.updateCharacterValueCallback}
                         onExpandChange={this.resizeMasonry}

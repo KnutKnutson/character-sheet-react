@@ -5,6 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import Delete from 'material-ui/svg-icons/action/delete';
 import ExitToApp from 'material-ui/svg-icons/action/exit-to-app';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -60,6 +61,7 @@ export default class NavMenu extends React.Component {
                 <Divider />
                 <MenuItem primaryText="Share" leftIcon={<Share />} />
                 <MenuItem primaryText="Delete" leftIcon={<Delete />} />
+                <MenuItem primaryText="New" leftIcon={<ContentAdd />} />
             </div>
         );
     };

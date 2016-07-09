@@ -8,6 +8,14 @@ import UserCharacters from '../model/user_characters';
 class Body extends React.Component {
     constructor(props) {
         super(props);
+        let user = this.props.user;
+        let userId = null;
+        if (user) {
+            userId = user.uid;
+        }
+        this.state = {
+            userCharacters: new UserCharacters(userId)
+        };
     }
 
     componentWillMount() {
@@ -16,11 +24,13 @@ class Body extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        //if (this.props.user.uid !== nextProps.user.uid) {
-        //    let nextUserCharacters = new UserCharacters(nextProps.user.uid);
-        //    this.state.character.unBindFireBaseCharacter();
-        //    nextUserCharacters.bindFireBaseCharacter(this);
-        //}
+        if (this.props.user && nextProps.user) {
+            if (this.props.user.uid !== nextProps.user.uid) {
+                let nextUserCharacters = new UserCharacters(nextProps.user.uid);
+                this.state.userCharacters.unBindUserCharacters();
+                nextUserCharacters.bindUserCharacters(this);
+            }
+        }
     }
 
     onSetOpen(open) {
@@ -32,7 +42,7 @@ class Body extends React.Component {
     render() {
         return (
             <div>
-                <Header {...this.props} />
+                <Header {...this.props} userCharacters={this.state.userCharacters} />
                 {
                     this.props.loggedIn ? <Sheet {...this.props} characterId={1} /> : null
                 }

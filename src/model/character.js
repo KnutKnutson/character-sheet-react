@@ -7,7 +7,7 @@ export default class Character {
         if (characterId) {
             this.characterFBRef = this.firebase.ref('/characters/' + characterId);
         } else {
-            this.characterFBRef = this.newCharacter();
+            //this.characterFBRef = this.newCharacter();
         }
     }
 
@@ -28,18 +28,20 @@ export default class Character {
 
     // DML
     newCharacter = () => {
+        console.log('new character');
         let newCharKey = this.firebase.ref('/userCharacters/' + auth.user.uid).push().key;
+        this.firebase.ref('/userCharacters/' + auth.user.uid + '/' + newCharKey).update({updatedAt: new Date()});
         let newCharRef = this.firebase.ref('/characters/' + newCharKey);
 
         for (let i = 1; i <= 3; i++) {
-            newCharacter.child('attacks').push()
+            newCharRef.child('attacks').push()
         }
         for (let i = 1; i <= 9; i++) {
-            newCharacter.child('spells').push({
+            newCharRef.child('spells').push({
                 level: i
             })
         }
-        return newCharacter;
+        return newCharRef;
         // TODO init character, attacks, spells, other lists?
     };
 
