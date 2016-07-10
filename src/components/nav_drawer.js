@@ -14,7 +14,21 @@ export default class NavDrawer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {open: this.props.openNavDrawer};
+
+        this.state = {
+            open: this.props.openNavDrawer,
+            docked: false
+        };
+    }
+
+    componentWillMount() {
+        this.mq = window.matchMedia( "(min-width: 1280px)" );
+        this.mq.addListener(this.isDocked);
+        this.isDocked(this.mq);
+    }
+
+    componentWillUnmount() {
+        this.mq.removeListener(this.isDocked);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -28,6 +42,10 @@ export default class NavDrawer extends React.Component {
     handleToggle = () => this.setState({open: !this.state.open});
 
     handleClose = () => this.setState({open: false});
+
+    isDocked = (mediaQuery) => {
+        this.setState({ docked: mediaQuery.matches });
+    };
 
     userCharacters = () => {
         if (this.props.userCharacters && this.props.userCharacters.userCharacterSummary) {
@@ -74,9 +92,9 @@ export default class NavDrawer extends React.Component {
 
                 <LeftNav
                     className="navigation-drawer"
-                    docked={false}
+                    docked={this.state.docked}
                     width={250}
-                    open={this.state.open}
+                    open={this.state.open || this.state.docked}
                     onRequestChange={open => this.setState({open})} >
 
                     <AppBar

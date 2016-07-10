@@ -35,7 +35,7 @@ export default class CharacterListItem extends React.Component {
             <ListItem
                 onTouchTap={this.props.changeCharacterCallback.bind(null, this.props.characterId)}
                 primaryText={cSum.characterName}
-                secondaryText={[(cSum.level ? 'lvl:' : null), cSum.level, cSum.characterClass, cSum.characterRace].join(' ')}
+                secondaryText={[(cSum.level ? 'lvl:' : null), cSum.level, cSum.characterRace, cSum.characterClass].join(' ')}
             />
         );
     }
