@@ -14,7 +14,15 @@ export default class NavDrawer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {open: false};
+        this.state = {open: this.props.openNavDrawer};
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.state.open) {
+            if (!nextProps.openNavDrawer) { this.handleToggle(); }
+        } else {
+            if (nextProps.openNavDrawer) { this.handleToggle(); }
+        }
     }
 
     handleToggle = () => this.setState({open: !this.state.open});
@@ -22,8 +30,8 @@ export default class NavDrawer extends React.Component {
     handleClose = () => this.setState({open: false});
 
     userCharacters = () => {
-        if (this.props.userCharacters && this.props.userCharacters.userCharactersData) {
-            return this.props.userCharacters.userCharactersData;
+        if (this.props.userCharacters && this.props.userCharacters.userCharacterSummary) {
+            return this.props.userCharacters.userCharacterSummary;
         } else {
             return [];
         }
@@ -33,9 +41,27 @@ export default class NavDrawer extends React.Component {
         return [];
     };
 
+    renderUserCharacters = () => {
+        let parent = this;
+        return this.userCharacters().map( function(character) {
+            return( <CharacterListItem
+                {...parent.props}
+                key={character.uid}
+                characterId={character.uid} />);
+        })
+    };
+
+    renderSharedCharacters = () => {
+        let parent = this;
+        return this.sharedCharacters().map(function(character) {
+            return( <CharacterListItem
+                {...parent.props}
+                key={character.uid}
+                characterId={character} />);
+        })
+    };
+
     render() {
-        let userCharacters = this.userCharacters();
-        let sharedCharacters = this.sharedCharacters();
         return (
             <div>
                 <IconButton
@@ -67,22 +93,12 @@ export default class NavDrawer extends React.Component {
 
                     <List>
                         <Subheader>My Characters</Subheader>
-                        {[].map( function(character) {
-                            return( <CharacterListItem
-                                {...this.props}
-                                key={character.uid}
-                                character={character} />);
-                        })}
+                        {this.renderUserCharacters()}
 
                         <Divider />
 
                         <Subheader>Allies</Subheader>
-                        {[].map(function(character) {
-                            return( <CharacterListItem
-                                {...this.props}
-                                key={character.uid}
-                                character={character} />);
-                        })}
+                        {this.renderSharedCharacters()}
                     </List>
                 </LeftNav>
             </div>

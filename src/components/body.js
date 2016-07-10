@@ -44,9 +44,11 @@ class Body extends React.Component {
         });
     };
 
-    changeCharacter = (newCharacterId) => {
-        console.log('changing character' + newCharacterId);
-        this.setState({characterId: newCharacterId});
+    changeCharacter = (newCharacterId, event) => {
+        this.setState({
+            openNavDrawer: false,
+            characterId: newCharacterId
+        });
         this.state.userCharacters.updateUserCharacter(newCharacterId);
     };
 
@@ -62,6 +64,7 @@ class Body extends React.Component {
                     newCharacterCallback={this.newCharacter}
                     changeCharacterCallback={this.changeCharacter}
                     deleteCharacterCallback={this.deleteCharacter}
+                    openNavDrawer={this.state.openNavDrawer}
                     userCharacters={this.state.userCharacters}
                     characterId={this.state.characterId} />
                 {

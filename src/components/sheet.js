@@ -6,6 +6,7 @@ import Paper from 'material-ui/Paper';
 
 import Attributes from './sheet/attributes';
 import Character from '../model/character';
+import CircularProgress from 'material-ui/CircularProgress';
 import CombatStats from './sheet/combat_stats';
 import Profile from './sheet/profile';
 

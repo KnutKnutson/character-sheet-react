@@ -36,7 +36,7 @@ export default class Character {
         let userCharacters = new UserCharacters(auth.user.uid);
         let newCharKey = userCharacters.newUserCharacter();
         let newCharRef = fb.ref('/characters/' + newCharKey);
-        newCharRef.set({name: "New Character"});
+        newCharRef.set({characterName: "New Character"});
 
         for (let i = 1; i <= 3; i++) {
             newCharRef.child('attacks/' + i).push({

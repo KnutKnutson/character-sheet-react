@@ -2,20 +2,40 @@ import React from 'react';
 
 import {List, ListItem} from 'material-ui/List';
 
+import CharacterSummary from '../model/character_summary';
+
 export default class CharacterListItem extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            characterSummary: new CharacterSummary(this.props.characterId)
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.characterId !== nextProps.characterId) {
+            let nextCharacter = new CharacterSummary(nextProps.characterId);
+            this.state.characterSummary.unBind();
+            nextCharacter.bind(this);
+        }
+    }
+
+    componentWillMount() {
+        this.state.characterSummary.bind(this);
+    }
+
+    componentWillUnmount() {
+        this.state.characterSummary.unBind();
     }
 
     render() {
-        let character = this.props.character;
+        let cSum = this.state.characterSummary.summary;
         return (
             <ListItem
-                onTouchTap={this.props.changeCharacterCallback}
-                primaryText={character.characterName}
-                secondaryText={['lvl:', character.level, character.characterClass, character.characterRace].join(' ')}
+                onTouchTap={this.props.changeCharacterCallback.bind(null, this.props.characterId)}
+                primaryText={cSum.characterName}
+                secondaryText={[(cSum.level ? 'lvl:' : null), cSum.level, cSum.characterClass, cSum.characterRace].join(' ')}
             />
         );
     }

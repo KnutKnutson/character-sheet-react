@@ -16,29 +16,12 @@ export default class SharedCharacters {
     bindSharedCharacters = (component) => {
         if (!this.sharedCharacters) { return null; }
         var parent = this;
-        // TODO watch for new or removed items only?
         this.sharedCharacters.on('value', function(snapshot) {
             parent.sharedCharactersData = snapshot.val();
             component.setState({
                 sharedCharacters: parent
             });
         });
-        //this.sharedCharacters.on('child_added', function(data) {
-        //    //parent.sharedCharacters = snapshot.val();
-        //    // data.key, data.val()
-        //    console.log(data);
-        //    component.setState({
-        //        sharedCharacters: parent.sharedCharacters
-        //    });
-        //});
-        //this.sharedCharacters.on('child_removed', function(data) {
-        //    //parent.sharedCharacters = snapshot.val();
-        //    console.log(data);
-        //    component.setState({
-        //        sharedCharacters: parent.sharedCharacters
-        //    });
-        //});
-        //this.watchUserCharacters(component);
     };
 
     unBindSharedCharacters = () => {
