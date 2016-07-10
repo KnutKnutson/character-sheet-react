@@ -29,13 +29,25 @@ export default class CharacterListItem extends React.Component {
         this.state.characterSummary.unBind();
     }
 
-    render() {
+    secondaryText = () => {
         let cSum = this.state.characterSummary.summary;
+        let sTextElements = [];
+        if (this.props.displayPlayerName && cSum.playerName) {
+            sTextElements.push(cSum.playerName, '\n');
+        }
+        if (cSum.level) {
+            sTextElements.push('lvl:', cSum.level);
+        }
+        sTextElements.push(cSum.characterRace, cSum.characterClass);
+        return sTextElements.join(' ');
+    };
+
+    render() {
         return (
             <ListItem
                 onTouchTap={this.props.changeCharacterCallback.bind(null, this.props.characterId)}
-                primaryText={cSum.characterName}
-                secondaryText={[(cSum.level ? 'lvl:' : null), cSum.level, cSum.characterRace, cSum.characterClass].join(' ')}
+                primaryText={this.state.characterSummary.summary.characterName}
+                secondaryText={this.secondaryText()}
             />
         );
     }

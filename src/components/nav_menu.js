@@ -14,6 +14,7 @@ import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import Share from 'material-ui/svg-icons/social/share';
 
 import LoginDialog from './forms/login';
+import ShareCharacterDialog from './forms/share_character';
 import SignupDialog from './forms/signup';
 
 import auth from '../model/auth';
@@ -24,14 +25,18 @@ export default class NavMenu extends React.Component {
         super(props);
         this.state = {
             loginOpen: false,
-            signupOpen: false
+            signupOpen: false,
+            shareCharacterOpen: false
         };
     }
+
+    // TODO: dedup all these dialog functions
 
     openLoginDialog = () => {
         this.setState({
             signupOpen: false,
-            loginOpen: true
+            loginOpen: true,
+            shareCharacterOpen: false
         });
     };
 
@@ -42,12 +47,25 @@ export default class NavMenu extends React.Component {
     openSignupDialog = () => {
         this.setState({
             loginOpen: false,
-            signupOpen: true
+            signupOpen: true,
+            shareCharacterOpen: false
+        });
+    };
+
+    openShareCharacterDialog = () => {
+        this.setState({
+            loginOpen: false,
+            signupOpen: false,
+            shareCharacterOpen: true
         });
     };
 
     closeSignupDialog = () => {
         this.setState({signupOpen: false});
+    };
+
+    closeShareCharacterDialog = () => {
+        this.setState({shareCharacterOpen: false});
     };
 
     logout = () => {
@@ -61,7 +79,7 @@ export default class NavMenu extends React.Component {
                 <MenuItem key="new" primaryText="New" leftIcon={<ContentAddCircle />} onTouchTap={this.props.newCharacterCallback} />
                 {(this.props.characterId) ?
                     [
-                        <MenuItem key="share" primaryText="Share" leftIcon={<Share />} />,
+                        <MenuItem key="share" primaryText="Share" leftIcon={<Share />} onTouchTap={this.openShareCharacterDialog} />,
                         <MenuItem key="delete" primaryText="Delete" leftIcon={<Delete />} />
                     ] : null
                 }
@@ -87,6 +105,7 @@ export default class NavMenu extends React.Component {
 
                 <LoginDialog open={this.state.loginOpen} signUp={this.openSignupDialog} buttonCallback={this.closeLoginDialog} />
                 <SignupDialog open={this.state.signupOpen} buttonCallback={this.closeSignupDialog} />
+                <ShareCharacterDialog {...this.props} open={this.state.shareCharacterOpen} closeCallback={this.closeShareCharacterDialog} />
             </div>
         );
     }

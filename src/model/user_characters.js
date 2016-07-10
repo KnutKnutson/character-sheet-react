@@ -6,21 +6,18 @@ export default class UserCharacters {
         this.firebase = csFirebase.app().database();
         this.uid = uid;
         if (uid) {
-            // TODO it may just return the results in order of updated at?
             this.userCharacters = this.firebase.ref('/userCharacters/' + uid);
-            //this.characterWatchers = this.watchUserCharacters();
+            this.sharedCharacters = this.firebase.ref('/sharedCharacters/');
         }
     }
 
     bindUserCharacters = (component) => {
-
+        this.component = component;
         if (!this.userCharacters) { return null; }
-        var parent = this;
+        let parent = this;
         // having a watcher here fucks up the body.js:changeCharacter callback as it's currently implemented.
-        // therefore loading once.
-        this.userCharacters.once('value').then(function(snapshot) {
-            parent.userCharactersData = snapshot.val();
-            parent.userCharacterSummary = parent.getUserCharactersSummaries();
+        // therefore loading once via refreshdata method instead of on('value').  Consider on('child_added'/removed) instead
+        this.refreshData(() => {
             component.setState({
                 userCharacters: parent,
                 characterId: parent.userCharacterSummary[0].uid
@@ -31,11 +28,15 @@ export default class UserCharacters {
     unBindUserCharacters = () => {
         if (!this.userCharacters) { return null; }
         this.userCharacters.off();
-        this.unWatchUserCharacters();
     };
 
-    unWatchUserCharacters = () => {
-
+    refreshData = (callBack) => {
+        let parent = this;
+        this.userCharacters.once('value').then(function(snapshot) {
+            parent.userCharactersData = snapshot.val();
+            parent.userCharacterSummary = parent.getUserCharactersSummaries();
+            if (callBack) { callBack(); }
+        });
     };
 
     getLastSelectedCharacterId = () => {
@@ -72,5 +73,47 @@ export default class UserCharacters {
         let newCharacterKey = this.userCharacters.push().key;
         this.updateUserCharacter(newCharacterKey);
         return newCharacterKey;
-    }
+    };
+
+    updateUserCharacterShares = (emailArray, characterId) => {
+        if (!this.userCharactersData) { return null; } // && !this.component
+        for (let email of emailArray) {
+            this.shareUserCharacter(email, characterId);
+        }
+        let previouslySharedWith = this.getSharedEmails();
+        for (let oldShare of previouslySharedWith) {
+            if (!emailArray.includes(oldShare)) {
+                this.unShareCharacter(oldShare, characterId);
+            }
+        }
+        this.refreshData();
+    };
+
+    removeAllUserCharacterShares = (characterId) => {
+        this.updateUserCharacterShares([], characterId);
+    };
+
+    shareUserCharacter = (email, characterId) => {
+        if (!this.sharedCharacters) { return null; }
+        this.sharedCharacters.child(email + '/' + characterId).update(true);
+    };
+
+    unShareCharacter = (email, characterId) => {
+        if (!this.sharedCharacters) { return null; }
+        this.sharedCharacters.child(email + '/' + characterId).remove();
+    };
+
+    getSharedEmails = (characterId) => {
+        if (!this.userCharactersData) { return null; }
+        if (this.userCharactersData[characterId].sharedWith) {
+            return this.userCharactersData[characterId].sharedWith.keys();
+        } else {
+            return [];
+        }
+    };
+
+    deleteUserCharacter = (characterId) => {
+        this.removeAllUserCharacterShares(characterId);
+        this.userCharacters.child(characterId).remove();
+    };
 }

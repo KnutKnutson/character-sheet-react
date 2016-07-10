@@ -132,5 +132,5 @@ class Auth {
         //});
     };
 }
-var auth = new Auth();
+let auth = new Auth();
 export default auth;

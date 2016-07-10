@@ -31,8 +31,8 @@ export default class Character {
 
     //
     static newCharacter = () => {
-        console.log('new character');
         let fb = csFirebase.app().database();
+        // TODO: move key generation to body.js?
         let userCharacters = new UserCharacters(auth.user.uid);
         let newCharKey = userCharacters.newUserCharacter();
         let newCharRef = fb.ref('/characters/' + newCharKey);
@@ -55,8 +55,9 @@ export default class Character {
         // TODO init character, attacks, spells, other lists?
     };
 
-    deleteCharacter = () => {
-        this.characterFBRef.delete();
+    static deleteCharacter = (characterId) => {
+        let fb = csFirebase.app().database();
+        fb.ref('/characters/' + characterId).remove();
     };
 
     updateCharacter = (path, value, callback) => {

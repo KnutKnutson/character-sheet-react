@@ -47,7 +47,6 @@ class LoginDialog extends Form {
 
         return (
             <Dialog
-                className="text-center"
                 title="Login"
                 actions={actions}
                 modal={true}

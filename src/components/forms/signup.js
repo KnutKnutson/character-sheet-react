@@ -38,7 +38,7 @@ class SignupDialog extends Form {
         ];
 
         return (
-            <Dialog className="text-center"
+            <Dialog
                     title="Sign Up"
                     actions={actions}
                     modal={true}

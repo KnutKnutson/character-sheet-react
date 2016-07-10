@@ -44,6 +44,10 @@ class Body extends React.Component {
         });
     };
 
+    shareCharacter = (emailArray) => {
+        this.state.userCharacters.updateUserCharacterShares(emailArray, this.state.characterId);
+    };
+
     changeCharacter = (newCharacterId, event) => {
         this.setState({
             openNavDrawer: false,
@@ -53,7 +57,10 @@ class Body extends React.Component {
     };
 
     deleteCharacter = () => {
-
+        // delete shares and usercharacter
+        Character.deleteCharacter(this.state.characterId);
+        this.userCharacters.deleteCharacter(this.state.characterId);
+        this.setState({characterId: null});
     };
 
     render() {
@@ -63,6 +70,7 @@ class Body extends React.Component {
                     {...this.props}
                     newCharacterCallback={this.newCharacter}
                     changeCharacterCallback={this.changeCharacter}
+                    shareCharacterCallback={this.shareCharacter}
                     deleteCharacterCallback={this.deleteCharacter}
                     openNavDrawer={this.state.openNavDrawer}
                     userCharacters={this.state.userCharacters}
