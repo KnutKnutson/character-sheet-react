@@ -5,6 +5,7 @@ npm-debug.log*
 
 # Config
 src/model/firebase.js
+.firebaserc
 
 # Runtime data
 pids

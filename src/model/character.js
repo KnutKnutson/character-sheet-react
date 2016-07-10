@@ -246,7 +246,7 @@ export default class Character {
 
 
     skillBonus = (modifier, trained) => {
-        if (!modifier) { return 0; }
+        if (!modifier && modifier !== 0) { return 0; }
         modifier = parseInt(modifier);
         return (trained ? (modifier + parseInt(this.proficiencyBonus())) : modifier);
     };

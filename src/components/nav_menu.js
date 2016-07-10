@@ -81,7 +81,7 @@ export default class NavMenu extends React.Component {
                     {(this.props.loggedIn)
                         ? <MenuItem key="logout" primaryText="Logout" leftIcon={<ExitToApp />} onTouchTap={this.logout} />
                         : <MenuItem key="login" primaryText="Login" leftIcon={<Person />} onTouchTap={this.openLoginDialog} />}
-                    <MenuItem key="signup" primaryText="Signup" leftIcon={<PersonAdd />} onTouchTap={this.openSignupDialog} />
+                    <MenuItem key="signup" primaryText="Sign Up" leftIcon={<PersonAdd />} onTouchTap={this.openSignupDialog} />
                     {(this.props.loggedIn) ? this.renderCharacterOptions() : null}
                 </IconMenu>
 

@@ -1,5 +1,7 @@
 import csFirebase from './firebase';
 
+import Character from './character';
+
 class Auth {
     constructor() {
         this.auth = csFirebase.app().auth();
@@ -62,6 +64,7 @@ class Auth {
             password //"correcthorsebatterystaple"
         ).then(function() {
             // on successful signup the user is logged in automatically. The auth will update with the new user.
+            Character.newCharacter();
             callback(null, true);
         }).catch(function(error) {
             var errorCode = error.code;

@@ -18,6 +18,7 @@ class SignupDialog extends Form {
 
     signup = () => {
         auth.createUser(this.state.email, this.state.password, this.submitCallback);
+
     };
 
     render() {
@@ -38,7 +39,7 @@ class SignupDialog extends Form {
 
         return (
             <Dialog className="text-center"
-                    title="Signup"
+                    title="Sign Up"
                     actions={actions}
                     modal={true}
                     open={this.props.open}
