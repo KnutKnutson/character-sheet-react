@@ -54,7 +54,7 @@ export default class SharedCharacters {
 
     };
 
-    updateUserCharacter = (characterId) => {
+    updateSharedCharacter = (characterId) => {
 
     };
 }
