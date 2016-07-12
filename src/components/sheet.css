@@ -15,7 +15,7 @@
      text-align: start;
  }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 320px) {
     .sheet-masonry-wrap {
         width: 320px;
     }

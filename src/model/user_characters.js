@@ -116,4 +116,8 @@ export default class UserCharacters {
         this.removeAllUserCharacterShares(characterId);
         this.userCharacters.child(characterId).remove();
     };
+
+    emailToKey = (email) => {
+
+    }
 }
