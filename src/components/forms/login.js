@@ -51,7 +51,9 @@ class LoginDialog extends Form {
                 actions={actions}
                 modal={true}
                 open={this.props.open}
-                autoScrollBodyContent={true}
+                autoScrollBodyContent={false}
+                autoDetectWindowHeight={false}
+                contentStyle={{width: '310px' }}
                 onRequestClose={this.closeCallback} >
                 <Paper zDepth={1} className={"alert " + (this.state.alertVisible ? null : "hidden")}>
                     {this.state.alertMessage}

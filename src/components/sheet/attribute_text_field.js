@@ -1,6 +1,5 @@
 import React from 'react';
 import Firebase from 'firebase';
-import $ from 'jquery';
 
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
@@ -29,15 +28,19 @@ export default class AttributeTextField extends React.Component {
         }
     };
 
+    getStyle = () => {
+        let style = this.props.style || {};
+        style['width'] = this.getWidth();
+        style['marginRight'] = '.5em';
+        return style;
+    };
+
     render() {
         return (
             <TextField
                 {...this.props}
                 name={this.props.name}
-                style={$.extend({
-                    width: this.getWidth(),
-                    marginRight: '.5em'
-                }, this.props.style)}
+                style={this.getStyle()}
                 floatingLabelText={this.props.floatingLabelText}
                 value={this.props.value}
             />

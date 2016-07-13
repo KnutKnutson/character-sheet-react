@@ -57,7 +57,9 @@ export default class ShareCharacterDialog extends React.Component {
                 actions={actions}
                 modal={false}
                 open={this.props.open}
-                autoScrollBodyContent={true}
+                autoScrollBodyContent={false}
+                autoDetectWindowHeight={false}
+                contentStyle={{width: '310px' }}
                 onRequestClose={this.props.closeCallback} >
                 <p> Enter emails separated by a space. </p>
                 <TextField

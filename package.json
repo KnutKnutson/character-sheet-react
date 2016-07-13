@@ -20,8 +20,6 @@
   "homepage": "https://github.com/KnutKnutson/character-sheet-react#readme",
   "dependencies": {
     "firebase": "^3.0.1",
-    "imports-loader": "^0.6.5",
-    "jquery": "^2.2.4",
     "material-ui": "^0.15.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
@@ -36,6 +34,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "css-loader": "^0.23.1",
+    "imports-loader": "^0.6.5",
     "node-sass": "^3.4.2",
     "postcss-cli": "^2.5.1",
     "postcss-scss": "^0.1.7",

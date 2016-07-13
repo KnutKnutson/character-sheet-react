@@ -39,12 +39,15 @@ class SignupDialog extends Form {
 
         return (
             <Dialog
-                    title="Sign Up"
-                    actions={actions}
-                    modal={true}
-                    open={this.props.open}
-                    autoScrollBodyContent={true}
-                    onRequestClose={this.closeCallback} >
+                title="Sign Up"
+                actions={actions}
+                modal={true}
+                open={this.props.open}
+                autoScrollBodyContent={false}
+                autoDetectWindowHeight={false}
+                contentStyle={{width: '310px' }}
+                onRequestClose={this.closeCallback} >
+
                 <Paper zDepth={1} className={"alert " + (this.state.alertVisible ? null : "hidden")}>
                     {this.state.alertMessage}
                 </Paper>
